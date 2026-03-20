@@ -1,0 +1,376 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.about-page {
+  flex: 1;
+  /* Added 'Kantumruy Pro' to the stack */
+  font-family: 'DM Mono', 'Kantumruy Pro', 'Courier New', monospace;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent;
+
+  /* Improvement: adjust line-height for Khmer characters to prevent clipping */
+  line-height: 1.6;
+}
+/* ============================= */
+/* NAVY MIRAGE PALETTE           */
+/* --dark:  #141E30               */
+/* --mid:   #243B55  (blended)    */
+/* --light: #3F5E96               */
+/* ============================= */
+
+/* ============================= */
+/* BUILT-IN ANIMATION SYSTEM     */
+/* ============================= */
+
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 800ms;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: none !important;
+}
+
+[data-aos='fade-up'] {
+  transform: translateY(50px);
+}
+[data-aos='fade-down'] {
+  transform: translateY(-50px);
+}
+[data-aos='fade-left'] {
+  transform: translateX(50px);
+}
+[data-aos='fade-right'] {
+  transform: translateX(-50px);
+}
+[data-aos='zoom-in'] {
+  transform: scale(0.82);
+}
+
+[data-aos-delay='100'] {
+  transition-delay: 100ms;
+}
+[data-aos-delay='200'] {
+  transition-delay: 200ms;
+}
+[data-aos-delay='300'] {
+  transition-delay: 300ms;
+}
+[data-aos-delay='400'] {
+  transition-delay: 400ms;
+}
+[data-aos-delay='500'] {
+  transition-delay: 500ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================= */
+/* PAGE BACKGROUND               */
+/* ============================= */
+
+:host {
+  background: linear-gradient(160deg, #141e30 0%, #1e2f4a 50%, #243b55 100%);
+}
+
+/* ============================= */
+/* SECTION LABEL / EYEBROW       */
+/* ============================= */
+
+.section-label {
+  display: inline-block;
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #3f5e96;
+  border: 1px solid rgba(63, 94, 150, 0.45);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+}
+
+/* ============================= */
+/* INTRO LAYOUT                  */
+/* ============================= */
+
+.intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2px;
+  margin-bottom: 80px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(63, 94, 150, 0.25);
+  backdrop-filter: blur(12px);
+}
+
+.hero,
+.mission {
+  flex: 1;
+  min-width: 280px;
+  padding: 52px 44px;
+  position: relative;
+}
+
+.hero {
+  background: linear-gradient(175deg, rgba(63, 94, 150, 0.18) 0%, rgba(20, 30, 48, 0.6) 100%);
+  border-right: 1px solid rgba(63, 94, 150, 0.2);
+}
+
+.mission {
+  background: linear-gradient(175deg, rgba(20, 30, 48, 0.6) 0%, rgba(63, 94, 150, 0.12) 100%);
+}
+
+.hero h2,
+.mission h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #e8edf5;
+  margin-bottom: 6px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero h2 span,
+.mission h2 span {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #8aa4cc;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.hero p,
+.mission p {
+  font-size: 1.05rem;
+  color: #9fb3ce;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.hero p.khmer-font,
+.mission p.khmer-font {
+  font-size: 0.97rem;
+  color: #7a95b8;
+  margin-top: 10px;
+}
+
+/* Decorative corner accent */
+.hero::before,
+.mission::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-color: rgba(63, 94, 150, 0.35);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.hero::before {
+  top: 20px;
+  left: 20px;
+  border-width: 1px 0 0 1px;
+}
+
+.mission::after {
+  bottom: 20px;
+  right: 20px;
+  border-width: 0 1px 1px 0;
+}
+
+/* ============================= */
+/* SEPARATOR                     */
+/* ============================= */
+
+.separator {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3f5e96, transparent);
+  margin: 0 0 70px;
+  opacity: 0.5;
+}
+
+/* ============================= */
+/* TEAM SECTION                  */
+/* ============================= */
+
+.team {
+  text-align: center;
+}
+
+.team > h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #e8edf5;
+  margin-bottom: 6px;
+  letter-spacing: -0.03em;
+}
+
+.team > h2 .khmer-font {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #6e8db5;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.team-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 44px;
+}
+
+/* ============================= */
+/* CARD                          */
+/* ============================= */
+
+.card {
+  position: relative;
+  background: linear-gradient(160deg, rgba(63, 94, 150, 0.22) 0%, rgba(20, 30, 48, 0.75) 100%);
+  border: 1px solid rgba(63, 94, 150, 0.3);
+  border-radius: 20px;
+  width: 220px;
+  padding: 32px 20px 28px;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+/* Glowing top edge on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3f5e96, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow:
+    0 24px 48px rgba(20, 30, 48, 0.6),
+    0 0 30px rgba(63, 94, 150, 0.2);
+  border-color: rgba(63, 94, 150, 0.55);
+}
+
+/* Number badge */
+.card-number {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(63, 94, 150, 0.7);
+  letter-spacing: 0.1em;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(63, 94, 150, 0.5);
+  box-shadow: 0 0 20px rgba(63, 94, 150, 0.3);
+  background: #141e30;
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #c8d8ee;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.card .role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: #3f5e96;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.card .description {
+  font-size: 0.88rem;
+  color: #6d88aa;
+  line-height: 1.7;
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .intro {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero {
+    border-right: none;
+    border-bottom: 1px solid rgba(63, 94, 150, 0.2);
+  }
+
+  .hero h2,
+  .mission h2,
+  .team > h2 {
+    font-size: 1.7rem;
+  }
+
+  .hero,
+  .mission {
+    padding: 36px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2,
+  .mission h2,
+  .team > h2 {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+  }
+}

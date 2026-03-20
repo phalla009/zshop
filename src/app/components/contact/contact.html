@@ -1,0 +1,126 @@
+<div class="contact-wrapper">
+  <!-- Section Header -->
+  <div class="contact-header" data-aos="fade-up">
+    <span class="contact-tagline">REACH OUT</span>
+    <h2>Get in Touch <span class="khmer">ទំនាក់ទំនង</span></h2>
+    <p>យើងនឹងឆ្លើយតបទៅអ្នកក្នុងរយៈពេលតិចជាង ២៤ ម៉ោង</p>
+  </div>
+
+  <!-- Info + Map Row -->
+  <div class="contact-top">
+    <!-- Company Info -->
+    <div class="company-info" data-aos="fade-right">
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <span class="info-label">អាសយដ្ឋាន</span>
+          <p>112 Street 97, Boeung Trabek, Chamkarmon, Phnom Penh, Cambodia</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-phone"></i></div>
+        <div>
+          <span class="info-label">ទូរស័ព្ទ</span>
+          <p>+855 12 345 678</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <span class="info-label">អ៊ីម៉ែល</span>
+          <p>info@propower.com.kh</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-clock"></i></div>
+        <div>
+          <span class="info-label">ម៉ោងធ្វើការ</span>
+          <p>Mon – Fri: 9:00 AM – 6:00 PM</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="contact-map" data-aos="fade-left">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31262.123456789!2d104.9233!3d11.5330!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951abcdef12345%3A0xyour_pin_here!2s112%20Street%2097%2C%20Boeung%20Trabek%2C%20Chamkarmon%2C%20Phnom%20Penh%2C%20Cambodia!5e0!3m2!1sen!2skh!4v0000000000000!5m2!1sen!2skh"
+        width="100%"
+        height="100%"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- Success Alert -->
+  <div *ngIf="successMessage" class="success-alert" data-aos="fade-up">
+    <i class="fas fa-circle-check"></i>
+    សូមអរគុណ! សាររបស់អ្នកត្រូវបានផ្ញើជូនរួចរាល់ហើយ។ យើងនឹងឆ្លើយតបឆាប់ៗ។
+  </div>
+
+  <!-- Contact Form -->
+  <form
+    [formGroup]="contactForm"
+    (ngSubmit)="onSubmit()"
+    class="contact-form"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+    <div class="form-row">
+      <div class="form-group">
+        <label>ឈ្មោះ <span class="en">Name</span></label>
+        <input formControlName="name" placeholder="Your full name" />
+        <small
+          *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+          class="error"
+        >
+          <i class="fas fa-triangle-exclamation"></i> សូមបញ្ចូលឈ្មោះ យ៉ាងហោចណាស់ ៣ តួអក្សរ។
+        </small>
+      </div>
+      <div class="form-group">
+        <label>លេខទូរស័ព្ទ <span class="en">Phone</span></label>
+        <input type="tel" formControlName="phone" placeholder="+855 xx xxx xxx" />
+        <small
+          *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched"
+          class="error"
+        >
+          <i class="fas fa-triangle-exclamation"></i> លេខទូរស័ព្ទត្រូវមានយ៉ាងតិច ៩ ខ្ទង់។
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>អ៊ីម៉ែល <span class="en">Email</span></label>
+      <input type="email" formControlName="email" placeholder="you@example.com" />
+      <small
+        *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+        class="error"
+      >
+        <i class="fas fa-triangle-exclamation"></i> សូមបញ្ចូលអ៊ីម៉ែលត្រឹមត្រូវ។
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>សារ <span class="en">Message</span></label>
+      <textarea formControlName="message" rows="5" placeholder="How can we help you?"></textarea>
+      <small
+        *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+        class="error"
+      >
+        <i class="fas fa-triangle-exclamation"></i> សូមសរសេរសារ (អតិបរមា ៥០០ តួអក្សរ)។
+      </small>
+    </div>
+
+    <button type="submit" [disabled]="contactForm.invalid || isSending">
+      <span *ngIf="!isSending"> <i class="fas fa-paper-plane"></i> Send Message </span>
+      <span *ngIf="isSending"> <i class="fas fa-circle-notch fa-spin"></i> កំពុងផ្ញើ... </span>
+    </button>
+  </form>
+</div>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+<app-footer></app-footer>

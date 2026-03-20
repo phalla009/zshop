@@ -1,0 +1,448 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 50px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(20, 30, 48, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(63, 94, 150, 0.25);
+  box-shadow: 0 8px 32px rgba(10, 16, 28, 0.45);
+}
+
+/* ================= LOGO ================= */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: 'Michroma', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #c8d8ee;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 80px;
+  transition: 0.3s ease;
+}
+
+.logo:hover {
+  color: #e8edf5;
+}
+
+.logo img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 68px;
+  width: auto;
+  z-index: 10;
+  filter: drop-shadow(0px 0px 8px rgba(63, 94, 150, 0.5));
+}
+
+.logo .country-name {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: #3f5e96;
+  letter-spacing: 3px;
+  margin-left: -100px;
+  align-self: flex-end;
+  margin-bottom: -10px;
+  text-transform: uppercase;
+}
+
+/* ================= DESKTOP LINKS ================= */
+.nav-links {
+  margin-right: 60px;
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links > li > a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #3f5e96;
+  transition: width 0.3s ease;
+}
+
+.nav-links > li > a:hover::after {
+  width: 100%;
+}
+.nav-links a:hover {
+  color: #e8edf5;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  border-radius: 12px;
+  top: calc(100% + 12px);
+  left: 0;
+  min-width: 240px;
+  background: rgba(20, 30, 48, 0.97);
+  border: 1px solid rgba(63, 94, 150, 0.35);
+  padding: 8px 0;
+  box-shadow:
+    0 16px 40px rgba(10, 16, 28, 0.6),
+    0 0 0 1px rgba(63, 94, 150, 0.1);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3f5e96, transparent);
+}
+
+.dropdown-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin-left: 6px;
+  font-size: 20px;
+  vertical-align: middle;
+  color: #3f5e96;
+}
+
+.dropdown-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdown-content.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ================= KHMER SUB LABEL ================= */
+.khmer-sub {
+  font-size: 10px;
+  color: rgba(164, 181, 214, 0.7);
+  font-weight: normal;
+  margin-top: 2px;
+  font-family: 'Kantumruy Pro', 'Hanuman', sans-serif;
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease;
+}
+
+/* ================= HAMBURGER ================= */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 2px;
+  width: 100%;
+  background: #9fb3ce;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+.menu-toggle span:last-child {
+  width: 70%;
+}
+
+/* ================================================
+   CATEGORY TRIGGER ROW
+   ================================================ */
+.submenu-trigger {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  padding: 10px 20px;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  color: #ffffff;
+  transition:
+    background 0.25s,
+    border-left-color 0.25s;
+}
+
+.submenu-trigger::after {
+  display: none !important;
+}
+
+.submenu-trigger:hover,
+.has-submenu.submenu-open > .submenu-trigger {
+  background: rgba(63, 94, 150, 0.15);
+  border-left-color: #3f5e96;
+}
+
+.cat-label {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  font-family: 'Kantumruy Pro', 'Hanuman', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.submenu-arrow {
+  font-size: 16px;
+  color: #3f5e96;
+  line-height: 1;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.submenu-arrow.rotate {
+  transform: rotate(90deg);
+}
+
+/* ================================================
+   GENDER LIST  (Men / Women links)
+   ================================================ */
+.gender-list {
+  list-style: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+/* Gender link style */
+.gender-list li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px 8px 32px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #c8d8ee;
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  border-left: 2px solid transparent;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-left-color 0.2s;
+}
+
+.gender-list li a::after {
+  display: none !important;
+}
+
+.gender-list li a:hover {
+  background: rgba(63, 94, 150, 0.15);
+  color: #e8edf5;
+  border-left-color: #3f5e96;
+}
+
+.gender-kh {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(164, 181, 214, 0.5);
+  font-family: 'Kantumruy Pro', 'Hanuman', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* ================================================
+   DESKTOP (≥ 769px) — accordion downward
+   ================================================ */
+@media (min-width: 769px) {
+  .gender-list {
+    max-height: 0;
+    background: rgba(14, 22, 38, 0.5);
+    border-left: 2px solid rgba(63, 94, 150, 0.2);
+    margin: 0 8px 0 20px;
+  }
+
+  .has-submenu.submenu-open > .gender-list {
+    max-height: 120px;
+  }
+}
+
+/* ================= MOBILE (≤ 768px) ================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .logo {
+    padding-left: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+  }
+
+  .logo img {
+    position: static;
+    transform: none;
+    height: 42px;
+    width: auto;
+  }
+
+  .logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo .country-name {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    margin-right: 0;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(16, 24, 40, 0.98);
+    backdrop-filter: blur(16px);
+    border-left: 1px solid rgba(63, 94, 150, 0.25);
+    flex-direction: column;
+    padding: 70px 16px 40px;
+    gap: 4px;
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-y: auto;
+    display: flex;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+
+  .nav-links > li > a:hover {
+    background: rgba(63, 94, 150, 0.12);
+  }
+  .nav-links > li > a::after {
+    display: none;
+  }
+
+  /* Mobile main dropdown */
+  .dropdown-content {
+    display: block;
+    position: relative;
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    border-left: 1px solid rgba(63, 94, 150, 0.3);
+    border-radius: 0;
+    margin: 4px 0 4px 14px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding: 0;
+    background: transparent;
+  }
+
+  .dropdown-content::before {
+    display: none;
+  }
+
+  .dropdown-content.show {
+    max-height: 800px;
+    padding: 4px 0;
+  }
+
+  /* Mobile category trigger */
+  .submenu-trigger {
+    padding: 9px 14px;
+    border-left: none;
+    border-radius: 6px;
+  }
+
+  /* Mobile gender list */
+  .gender-list {
+    max-height: 0;
+    border-left: 1px solid rgba(63, 94, 150, 0.25);
+    margin: 2px 0 2px 14px;
+    background: transparent;
+  }
+
+  .has-submenu.submenu-open > .gender-list {
+    max-height: 120px;
+  }
+
+  .gender-list li a {
+    padding: 7px 12px;
+    border-left: none;
+    border-radius: 6px;
+    font-size: 11px;
+  }
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 15px 30px;
+  }
+  .nav-links {
+    margin-right: 20px;
+    gap: 22px;
+  }
+}

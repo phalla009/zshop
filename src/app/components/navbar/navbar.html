@@ -1,0 +1,107 @@
+<nav class="navbar">
+  <div class="logo">
+    <img src="/images/logo.png" alt="MyStore Logo" />
+    Z’SHOP <span class="country-name">Cambodia</span>
+  </div>
+
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <span [class.open]="isOpen"></span>
+    <span [class.open]="isOpen"></span>
+    <span [class.open]="isOpen"></span>
+  </div>
+
+  <ul class="nav-links" [class.active]="isOpen">
+    <li><a routerLink="/" (click)="closeMenu()">HOME</a></li>
+
+    <!-- ALL CATEGORIES -->
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn" (click)="toggleCategory($event)">
+        ALL CATEGORIES
+        <span class="dropdown-icon" [class.rotate]="isCategoryOpen">&#9662;</span>
+      </a>
+
+      <ul class="dropdown-content" [class.show]="isCategoryOpen">
+        <!-- សម្លៀកបំពាក់ -->
+        <li class="has-submenu" [class.submenu-open]="activeCategory === 'clothing'">
+          <a
+            href="javascript:void(0)"
+            class="submenu-trigger"
+            (click)="toggleCategorySub($event, 'clothing')"
+          >
+            <span class="cat-label">សម្លៀកបំពាក់</span>
+            <span class="khmer-sub">Clothing</span>
+            <span class="submenu-arrow" [class.rotate]="activeCategory === 'clothing'"
+              >&#8250;</span
+            >
+          </a>
+          <ul class="gender-list">
+            <li>
+              <a routerLink="/shop/សម្លៀកបំពាក់/men" (click)="closeMenu()">
+                MEN <span class="gender-kh">បុរស</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/shop/សម្លៀកបំពាក់/women" (click)="closeMenu()">
+                WOMEN <span class="gender-kh">ស្ត្រី</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- នាឡិកា -->
+        <li class="has-submenu" [class.submenu-open]="activeCategory === 'watches'">
+          <a
+            href="javascript:void(0)"
+            class="submenu-trigger"
+            (click)="toggleCategorySub($event, 'watches')"
+          >
+            <span class="cat-label">នាឡិកា</span>
+            <span class="khmer-sub">Watches</span>
+            <span class="submenu-arrow" [class.rotate]="activeCategory === 'watches'">&#8250;</span>
+          </a>
+          <ul class="gender-list">
+            <li>
+              <a routerLink="/shop/នាឡិកា/men" (click)="closeMenu()">
+                MEN <span class="gender-kh">បុរស</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/shop/នាឡិកា/women" (click)="closeMenu()">
+                WOMEN <span class="gender-kh">ស្ត្រី</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- ស្បែកជើង -->
+        <li class="has-submenu" [class.submenu-open]="activeCategory === 'shoes'">
+          <a
+            href="javascript:void(0)"
+            class="submenu-trigger"
+            (click)="toggleCategorySub($event, 'shoes')"
+          >
+            <span class="cat-label">ស្បែកជើង</span>
+            <span class="khmer-sub">Shoes</span>
+            <span class="submenu-arrow" [class.rotate]="activeCategory === 'shoes'">&#8250;</span>
+          </a>
+          <ul class="gender-list">
+            <li>
+              <a routerLink="/shop/ស្បែកជើង/men" (click)="closeMenu()">
+                MEN <span class="gender-kh">បុរស</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/shop/ស្បែកជើង/women" (click)="closeMenu()">
+                WOMEN <span class="gender-kh">ស្ត្រី</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li><a routerLink="/product" (click)="closeMenu()">PRODUCTS</a></li>
+    <li><a routerLink="/about" (click)="closeMenu()">ABOUT</a></li>
+    <li><a routerLink="/contact" (click)="closeMenu()">CONTACT</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,85 @@
+<section class="hero">
+  <div class="hero-content">
+    <h1 data-aos="fade-up">Z’SHOP Cambodia</h1>
+    <h2 data-aos="fade-up" data-aos-delay="100">លើកកម្ពស់ស្ទីលរបស់អ្នក ឱ្យកាន់តែទាន់សម័យ</h2>
+    <br />
+    <p data-aos="fade-up" data-aos-delay="200">
+      ស្វាគមន៍មកកាន់ Z’SHOP Cambodia! យើងគឺជាមជ្ឈមណ្ឌលចែកចាយ និងផ្គត់ផ្គង់សម្លៀកបំពាក់ នាឡិកាដៃ
+      និងស្បែកជើងដែលមានម៉ូដទាន់សម័យបំផុត គុណភាពខ្ពស់ និងតម្លៃសមរម្យបំផុតនៅក្នុងប្រទេសកម្ពុជា។
+    </p>
+    <div class="service-container" data-aos="fade-up" data-aos-delay="300">
+      <div class="service-item">
+        <i class="fa-solid fa-shirt"></i>
+        <h2>ម៉ូដទាន់សម័យ</h2>
+      </div>
+
+      <div class="service-item">
+        <i class="fa-solid fa-gem"></i>
+        <h2>គុណភាពខ្ពស់</h2>
+      </div>
+
+      <div class="service-item">
+        <i class="fa-solid fa-clapperboard"></i>
+        <h2>ជម្រើសច្រើនសម្បូរបែប</h2>
+      </div>
+
+      <div class="service-item">
+        <i class="fa-solid fa-tags"></i>
+        <h2>តម្លៃសមរម្យ</h2>
+      </div>
+
+      <div class="service-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h2>ដឹកជញ្ជូនរហ័ស</h2>
+      </div>
+    </div>
+
+    <br />
+    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+      <button class="btn-primary">Explore Services</button>
+      <a href="/contact">
+        <button class="btn-outline">Contact Us</button>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="blog-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="subtitle">{{ blogData.header.tagline }}</span>
+      <h2>{{ blogData.header.name }}</h2>
+      <p>{{ blogData.header.desc }}</p>
+    </div>
+
+    <div class="blog-grid">
+      <article
+        class="blog-card"
+        data-aos="fade-up"
+        [attr.data-aos-delay]="(i * 150).toString()"
+        *ngFor="let post of blogData.articles; let i = index"
+      >
+        <div class="blog-img">
+          <img [src]="post.img" [alt]="post.name" />
+          <span class="category">{{ post.category }}</span>
+        </div>
+        <div class="blog-info">
+          <span class="date">{{ post.date }}</span>
+          <h3>{{ post.name }}</h3>
+
+          <p [class.show-all]="expandedCards[post.id]">
+            {{ expandedCards[post.id] ? post.fullDesc : post.shortDesc }}
+          </p>
+
+          <a href="javascript:void(0)" class="read-more" (click)="toggleReadMore(post.id)">
+            {{ expandedCards[post.id] ? 'Show Less' : 'Read More' }}
+            <i
+              class="fa-solid"
+              [ngClass]="expandedCards[post.id] ? 'fa-angles-up' : 'fa-arrow-right'"
+            ></i>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
