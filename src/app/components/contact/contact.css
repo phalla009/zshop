@@ -222,10 +222,11 @@
 
 .info-label {
   display: block;
-  font-family: 'DM Mono', 'Courier New', monospace;
+  /* Use spaces instead of '+' in the CSS rule */
+  font-family: 'DM Mono', 'Kantumruy Pro', 'Hanuman', sans-serif;
   font-size: 9.5px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em; /* Adjusted slightly for Khmer readability */
   text-transform: uppercase;
   color: var(--text-bright);
   margin-bottom: 5px;

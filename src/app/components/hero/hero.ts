@@ -98,4 +98,5 @@ export class Hero implements AfterViewInit, OnDestroy {
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+  
 }
