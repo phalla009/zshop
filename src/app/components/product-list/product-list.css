@@ -809,7 +809,7 @@ button,
   right: 30px;
   width: 48px;
   height: 48px;
-  background: rgba(63, 94, 150, 0.85);
+  background: rgba(44, 78, 142, 0.85);
   color: #e8edf5;
   border: 1px solid var(--border-hover);
   border-radius: 50%;
@@ -833,7 +833,6 @@ button,
 }
 
 .back-to-top:hover {
-  background: var(--navy-accent);
   transform: translateY(-14px);
   box-shadow: 0 12px 28px rgba(63, 94, 150, 0.45);
 }
@@ -1242,3 +1241,7 @@ button,
 }
 
 /* badge-men / badge-women apply to all three variants above */
+.back-to-top {
+  opacity: 1 !important;
+  visibility: visible !important;
+}

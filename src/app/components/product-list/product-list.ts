@@ -145,12 +145,17 @@ export class ProductListComponent implements AfterViewInit, AfterViewChecked, On
     this.router.navigate(['/product', product.id]);
   }
 
+  @HostListener('document:scroll', [])
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isShow = window.scrollY > 400;
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop || window.scrollY;
+    this.isShow = scrollTop > 400;
   }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+    document.body.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
