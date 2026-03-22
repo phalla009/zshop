@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LangService } from '../../services/Lang';
@@ -15,7 +15,18 @@ export class NavbarComponent {
   isCategoryOpen = false;
   activeCategory: string | null = null;
 
-  constructor(public langService: LangService) {}
+  constructor(
+    public langService: LangService,
+    private elementRef: ElementRef,
+  ) {}
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.closeMenu();
+    }
+  }
 
   get lang() {
     return this.langService.lang();
