@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LangService } from '../../services/Lang';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  standalone: true,
   templateUrl: './footer.html',
-  styleUrl: './footer.css',
+  styleUrls: ['./footer.css'],
 })
 export class Footer {
+  private langService = inject(LangService);
 
+  get lang() {
+    return this.langService.lang();
+  }
 }

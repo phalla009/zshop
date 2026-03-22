@@ -3,10 +3,13 @@
     <div class="footer-grid">
       <!-- Col 1: Brand -->
       <div class="footer-section">
-        <h5>Z’SHOP Cambodia</h5>
+        <h5>Z'SHOP Cambodia</h5>
         <p>
-          យើងផ្តល់ជូននូវគ្រឿងអេឡិចត្រូនិច និងម៉ូដទាន់សម័យជុំវិញពិភពលោក ដោយផ្តោតសំខាន់លើគុណភាពខ្ពស់
-          ការដឹកជញ្ជូនរហ័ស និងក្តីរីករាយរបស់អតិថិជន។
+          {{
+            lang === 'en'
+              ? 'We provide modern electronics and fashion worldwide, focusing on high quality, fast delivery, and customer satisfaction.'
+              : 'យើងផ្តល់ជូននូវគ្រឿងអេឡិចត្រូនិច និងម៉ូដទាន់សម័យជុំវិញពិភពលោក ដោយផ្តោតសំខាន់លើគុណភាពខ្ពស់ ការដឹកជញ្ជូនរហ័ស និងក្តីរីករាយរបស់អតិថិជន។'
+          }}
         </p>
         <div class="social-icons">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -18,29 +21,45 @@
 
       <!-- Col 2: Explore -->
       <div class="footer-section">
-        <h5>Explore</h5>
+        <h5>{{ lang === 'en' ? 'Explore' : 'ស្វែងរក' }}</h5>
         <ul>
-          <li><a href="#">Shop All</a></li>
-          <li><a href="#">New Arrivals</a></li>
-          <li><a href="#">Membership</a></li>
-          <li><a href="#">Gift Cards</a></li>
+          <li>
+            <a href="#">{{ lang === 'en' ? 'Shop All' : 'ទិញទំនិញទាំងអស់' }}</a>
+          </li>
+          <li>
+            <a href="#">{{ lang === 'en' ? 'New Arrivals' : 'ផលិតផលថ្មី' }}</a>
+          </li>
+          <li>
+            <a href="#">{{ lang === 'en' ? 'Membership' : 'សមាជិកភាព' }}</a>
+          </li>
+          <li>
+            <a href="#">{{ lang === 'en' ? 'Gift Cards' : 'កាតអំណោយ' }}</a>
+          </li>
         </ul>
       </div>
 
       <!-- Col 3: Support -->
       <div class="footer-section">
-        <h5>Support</h5>
+        <h5>{{ lang === 'en' ? 'Support' : 'ជំនួយ' }}</h5>
         <ul>
-          <li><a href="#">Shipping Policy</a></li>
-          <li><a href="#">Return Center</a></li>
-          <li><a href="#">Track Order</a></li>
-          <li><a href="#">Help Privacy</a></li>
+          <li>
+            <a href="#">{{ lang === 'en' ? 'Shipping Policy' : 'គោលការណ៍ដឹកជញ្ជូន' }}</a>
+          </li>
+          <li>
+            <a href="#">{{ lang === 'en' ? 'Return Center' : 'មជ្ឈមណ្ឌលត្រឡប់ទំនិញ' }}</a>
+          </li>
+          <li>
+            <a href="#">{{ lang === 'en' ? 'Track Order' : 'តាមដានការបញ្ជាទិញ' }}</a>
+          </li>
+          <li>
+            <a href="#">{{ lang === 'en' ? 'Help & Privacy' : 'ជំនួយ និងឯកជនភាព' }}</a>
+          </li>
         </ul>
       </div>
 
-      <!-- Col 3: Get In Touch -->
+      <!-- Col 4: Get In Touch -->
       <div class="footer-section">
-        <h5>Get In Touch</h5>
+        <h5>{{ lang === 'en' ? 'Get In Touch' : 'ទំនាក់ទំនង' }}</h5>
         <ul class="contact-list">
           <li>
             <i class="fas fa-envelope"></i>
@@ -61,10 +80,13 @@
     <hr class="footer-divider" />
 
     <div class="footer-bottom">
-      <p>© 2026 Z’SHOP Cambodia. All Rights Reserved.</p>
+      <p>
+        © 2026 Z'SHOP Cambodia.
+        {{ lang === 'en' ? 'All Rights Reserved.' : 'រក្សាសិទ្ធិគ្រប់យ៉ាង។' }}
+      </p>
       <div class="footer-legal">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+        <a href="#">{{ lang === 'en' ? 'Privacy' : 'ឯកជនភាព' }}</a>
+        <a href="#">{{ lang === 'en' ? 'Terms' : 'លក្ខខណ្ឌ' }}</a>
       </div>
     </div>
   </div>
