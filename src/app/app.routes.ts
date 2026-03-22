@@ -9,7 +9,7 @@ export const routes: Routes = [
   { path: '', component: Home },
   { path: 'home', component: Home },
   { path: 'product', component: ProductListComponent },
-  { path: 'product/:id', component: ProductDetailComponent }, // ← add this
+  { path: 'product/:id', component: ProductDetailComponent },
   { path: 'category/:id', component: ProductListComponent },
   { path: 'shop/:category/:subcategory', component: ProductListComponent },
   { path: 'about', component: About },

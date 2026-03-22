@@ -1,4 +1,3 @@
-// product-detail.ts
 import { Component, signal, computed, inject, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Footer } from '../footer/footer';
 import { Productservice } from '../../services/productservice';
 import { Product } from '../../models/product.model';
+import { LangService } from '../../services/Lang';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -19,11 +19,15 @@ export class ProductDetailComponent implements OnInit {
   private productService = inject(Productservice);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private langService = inject(LangService);
+
+  get lang() {
+    return this.langService.lang();
+  }
 
   // ── Product ────────────────────────────────────────────
   product = signal<Product | null>(null);
 
-  // Active gallery image
   private _activeImg = signal<string>('');
   activeImg = computed(() => this._activeImg());
 
@@ -39,7 +43,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/shop']); // adjust route as needed
+    this.router.navigate(['/shop']);
   }
 
   // ── Scroll ────────────────────────────────────────────
@@ -114,16 +118,26 @@ export class ProductDetailComponent implements OnInit {
       .then((res) => {
         if (res.ok) {
           this.showStatus(
-            'បញ្ជូនទិន្នន័យជោគជ័យ! ផ្នែកលក់នឹងទាក់ទងទៅលោកអ្នកក្នុងពេលឆាប់ៗ។',
+            this.lang === 'en'
+              ? 'Sent successfully! Our sales team will contact you shortly.'
+              : 'បញ្ជូនទិន្នន័យជោគជ័យ! ផ្នែកលក់នឹងទាក់ទងទៅលោកអ្នកក្នុងពេលឆាប់ៗ។',
             'success',
           );
           this.resetForm();
         } else {
-          this.showStatus('បរាជ័យ! សូមព្យាយាមម្តងទៀត ឬទាក់ទងមកយើងផ្ទាល់។', 'error');
+          this.showStatus(
+            this.lang === 'en'
+              ? 'Failed! Please try again or contact us directly.'
+              : 'បរាជ័យ! សូមព្យាយាមម្តងទៀត ឬទាក់ទងមកយើងផ្ទាល់។',
+            'error',
+          );
         }
       })
       .catch(() => {
-        this.showStatus('មិនអាចភ្ជាប់ទៅកាន់ Telegram បានទេ', 'error');
+        this.showStatus(
+          this.lang === 'en' ? 'Cannot connect to Telegram.' : 'មិនអាចភ្ជាប់ទៅកាន់ Telegram បានទេ',
+          'error',
+        );
       })
       .finally(() => {
         this.isSending = false;

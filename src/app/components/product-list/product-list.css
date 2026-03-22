@@ -242,7 +242,7 @@
 }
 
 .specs-label {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', 'Battambang', monospace;
   font-size: 0.7rem;
   color: var(--text-dim);
   text-transform: uppercase;

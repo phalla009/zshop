@@ -1,20 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Hanuman:wght@100;300;400;700;900&family=Battambang:wght@100;300;400;700;900&family=Moul&display=swap');
+
 :host {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 .about-page {
   flex: 1;
-  /* Added 'Kantumruy Pro' to the stack */
   font-family: 'DM Mono', 'Kantumruy Pro', 'Courier New', monospace;
   padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
   background: transparent;
-
-  /* Improvement: adjust line-height for Khmer characters to prevent clipping */
   line-height: 1.6;
 }
+
+/* ============================= */
+/* KHMER FONT VARIABLES          */
+/* ============================= */
+
+:root {
+  --font-khmer: 'Kantumruy Pro', 'Hanuman', 'Battambang', sans-serif;
+  --font-khmer-display: 'Moul', 'Kantumruy Pro', 'Hanuman', serif;
+}
+
 /* ============================= */
 /* NAVY MIRAGE PALETTE           */
 /* --dark:  #141E30               */
@@ -142,18 +152,27 @@
   font-weight: 600;
   color: #e8edf5;
   margin-bottom: 6px;
-  line-height: 1.2;
+  line-height: 1.3;
   letter-spacing: -0.02em;
+}
+
+/* Khmer display font for h2 main text */
+.hero h2,
+.mission h2 {
+  font-family: var(--font-khmer-display);
+  font-weight: 400;
 }
 
 .hero h2 span,
 .mission h2 span {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #8aa4cc;
-  margin-top: 4px;
+  margin-top: 8px;
   font-style: italic;
+  font-family: var(--font-khmer);
+  letter-spacing: 0;
 }
 
 .hero p,
@@ -166,9 +185,11 @@
 
 .hero p.khmer-font,
 .mission p.khmer-font {
+  font-family: var(--font-khmer);
   font-size: 0.97rem;
   color: #ffffff;
   margin-top: 10px;
+  line-height: 2;
 }
 
 /* Decorative corner accent */
@@ -217,19 +238,22 @@
 
 .team > h2 {
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #e8edf5;
   margin-bottom: 6px;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.01em;
+  font-family: var(--font-khmer-display);
 }
 
 .team > h2 .khmer-font {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #6e8db5;
-  margin-top: 4px;
+  margin-top: 8px;
   font-style: italic;
+  font-family: var(--font-khmer);
+  letter-spacing: 0;
 }
 
 .team-cards {
@@ -333,6 +357,22 @@
   font-size: 0.88rem;
   color: #ffffff;
   line-height: 1.7;
+}
+
+/* Khmer text in cards */
+.card .description.khmer-font {
+  font-family: var(--font-khmer);
+  font-size: 0.85rem;
+  line-height: 1.9;
+}
+
+/* ============================= */
+/* GLOBAL KHMER CLASS            */
+/* ============================= */
+
+.khmer-font {
+  font-family: var(--font-khmer);
+  line-height: 2;
 }
 
 /* ============================= */

@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Productservice } from '../../services/productservice';
 import { Product } from '../../models/product.model';
+import { LangService } from '../../services/Lang';
 
 @Component({
   selector: 'app-product',
@@ -26,11 +27,16 @@ export class ProductListComponent implements AfterViewInit, AfterViewChecked, On
   private productService = inject(Productservice);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private langService = inject(LangService);
 
   private routeParams = toSignal(this.route.params);
   isShow = false;
   products = this.productService.productslist;
   searchTerm = signal('');
+
+  get lang() {
+    return this.langService.lang();
+  }
 
   // ─── Animation ───────────────────────────────────────────
   private cardObserver!: IntersectionObserver;
@@ -55,13 +61,11 @@ export class ProductListComponent implements AfterViewInit, AfterViewChecked, On
         entries.forEach((entry) => {
           if (entry.isIntersecting && !this.animatedCards.has(entry.target)) {
             this.animatedCards.add(entry.target);
-
             const siblings = Array.from(
               (entry.target.parentElement?.children ?? []) as HTMLCollectionOf<HTMLElement>,
             );
             const index = siblings.indexOf(entry.target as HTMLElement);
             const delay = Math.min(index * 80, 480);
-
             (entry.target as HTMLElement).style.animationDelay = `${delay}ms`;
             entry.target.classList.add('animate-in');
             this.cardObserver.unobserve(entry.target);
@@ -121,10 +125,11 @@ export class ProductListComponent implements AfterViewInit, AfterViewChecked, On
     const params = this.routeParams();
     const cat = params?.['category'] ?? params?.['id'] ?? null;
     const sub = params?.['subcategory'] ?? null;
+    const isEn = this.langService.lang() === 'en';
 
-    if (!cat) return 'ផលិតផលទាំងអស់';
+    if (!cat) return isEn ? 'All Products' : 'ផលិតផលទាំងអស់';
     if (sub) {
-      const label = sub === 'men' ? 'បុរស' : 'ស្ត្រី';
+      const label = sub === 'men' ? (isEn ? 'Men' : 'បុរស') : isEn ? 'Women' : 'ស្ត្រី';
       return `${cat} — ${label}`;
     }
     return cat;

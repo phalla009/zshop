@@ -1,4 +1,3 @@
-<!-- product-detail.html -->
 @if (product(); as product) {
   <div class="detail-shell">
     <!-- ── Breadcrumb ── -->
@@ -13,7 +12,6 @@
     <div class="detail-grid">
       <!-- ══ LEFT — Gallery ══ -->
       <div class="gallery-col">
-        <!-- Main image -->
         <div class="gallery-main">
           @if (product.subcategory) {
             <div class="badge-row-img">
@@ -29,7 +27,6 @@
           <img [src]="activeImg()" [alt]="product.name" class="main-img" />
         </div>
 
-        <!-- Thumbnail strip -->
         @if (product.image.length > 1) {
           <div class="thumb-strip">
             @for (img of product.image; track img; let i = $index) {
@@ -47,7 +44,6 @@
 
       <!-- ══ RIGHT — Info + Form ══ -->
       <div class="info-col">
-        <!-- Category + subcategory badges -->
         <div class="badge-row">
           <span class="cat-badge">{{ product.category }}</span>
           @if (product.subcategory) {
@@ -66,13 +62,15 @@
 
         <!-- Technical specs -->
         <section class="info-section">
-          <p class="section-label">Technical Specifications</p>
+          <p class="section-label">
+            {{ lang === 'en' ? 'Technical Specifications' : 'លក្ខណៈបច្ចេកទេស' }}
+          </p>
           <p class="section-body">{{ product.specs }}</p>
         </section>
 
         <!-- Description -->
         <section class="info-section">
-          <p class="section-label">Description</p>
+          <p class="section-label">{{ lang === 'en' ? 'Description' : 'ការពិពណ៌នា' }}</p>
           <p class="section-body">{{ product.description }}</p>
         </section>
 
@@ -80,69 +78,74 @@
         <div class="inquiry-card">
           <h3 class="inquiry-title">
             <i class="fa-solid fa-address-card"></i>
-            ព័ត៌មានទំនាក់ទំនងផ្នែកលក់
+            {{ lang === 'en' ? 'Sales Contact Information' : 'ព័ត៌មានទំនាក់ទំនងផ្នែកលក់' }}
           </h3>
 
           <div class="field-group">
-            <label class="field-label">ឈ្មោះ</label>
+            <label class="field-label">{{ lang === 'en' ? 'Name' : 'ឈ្មោះ' }}</label>
             <input
               type="text"
               [(ngModel)]="customerName"
               class="field-input"
               [class.input-error]="formSubmitted && !customerName.trim()"
-              placeholder="ឈ្មោះរបស់អ្នក..."
+              [placeholder]="lang === 'en' ? 'Your name...' : 'ឈ្មោះរបស់អ្នក...'"
             />
             @if (formSubmitted && !customerName.trim()) {
-              <span class="error-msg">សូមបញ្ចូលឈ្មោះរបស់អ្នក!</span>
+              <span class="error-msg">{{
+                lang === 'en' ? 'Please enter your name!' : 'សូមបញ្ចូលឈ្មោះរបស់អ្នក!'
+              }}</span>
             }
           </div>
 
           <div class="field-group">
-            <label class="field-label">លេខទូរស័ព្ទ</label>
+            <label class="field-label">{{ lang === 'en' ? 'Phone Number' : 'លេខទូរស័ព្ទ' }}</label>
             <input
               type="text"
               [(ngModel)]="customerPhone"
               class="field-input"
               [class.input-error]="formSubmitted && !customerPhone.trim()"
-              placeholder="លេខទូរស័ព្ទ..."
+              [placeholder]="lang === 'en' ? 'Phone number...' : 'លេខទូរស័ព្ទ...'"
             />
             @if (formSubmitted && !customerPhone.trim()) {
-              <span class="error-msg">សូមបញ្ចូលលេខទូរស័ព្ទ!</span>
+              <span class="error-msg">{{
+                lang === 'en' ? 'Please enter your phone number!' : 'សូមបញ្ចូលលេខទូរស័ព្ទ!'
+              }}</span>
             }
           </div>
 
           <div class="field-group">
-            <label class="field-label"> សារបន្ថែម <span class="optional">(Optional)</span> </label>
+            <label class="field-label">
+              {{ lang === 'en' ? 'Additional Note' : 'សារបន្ថែម' }}
+              <span class="optional">({{ lang === 'en' ? 'Optional' : 'មិនចាំបាច់' }})</span>
+            </label>
             <textarea
               [(ngModel)]="customerNote"
               class="field-input field-textarea"
-              placeholder="សារបន្ថែម..."
+              [placeholder]="lang === 'en' ? 'Additional note...' : 'សារបន្ថែម...'"
             ></textarea>
           </div>
 
           <button class="send-btn" (click)="sendToTelegram(product)" [disabled]="isSending">
             @if (isSending) {
-              <i class="fa-solid fa-circle-notch fa-spin"></i> កំពុងផ្ញើ...
+              <i class="fa-solid fa-circle-notch fa-spin"></i>
+              {{ lang === 'en' ? 'Sending...' : 'កំពុងផ្ញើ...' }}
             } @else {
-              <i class="fa-solid fa-paper-plane"></i> ផ្ញើជូនផ្នែកលក់
+              <i class="fa-solid fa-paper-plane"></i>
+              {{ lang === 'en' ? 'Send to Sales' : 'ផ្ញើជូនផ្នែកលក់' }}
             }
           </button>
         </div>
-
-        <!-- Back button -->
-        <!-- <button class="back-btn" (click)="goBack()">
-          <i class="fa-solid fa-arrow-left"></i> ត្រឡប់ក្រោយ
-        </button> -->
       </div>
     </div>
-    <!-- /detail-grid -->
   </div>
-  <!-- /detail-shell -->
 } @else {
   <div class="not-found">
     <i class="fa-solid fa-triangle-exclamation"></i>
-    <h2>Product not found</h2>
-    <a routerLink="/" class="back-btn"> <i class="fa-solid fa-arrow-left"></i> Go back </a>
+    <h2>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h2>
+    <a routerLink="/" class="back-btn">
+      <i class="fa-solid fa-arrow-left"></i>
+      {{ lang === 'en' ? 'Go back' : 'ត្រឡប់ក្រោយ' }}
+    </a>
   </div>
 }
 

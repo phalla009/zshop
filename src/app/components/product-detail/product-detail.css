@@ -1,20 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Hanuman:wght@100;300;400;700;900&family=Battambang:wght@100;300;400;700;900&family=Moul&display=swap');
+
 /* ============================================
    product-detail.css  — full-page detail view
    ============================================ */
 
 :root {
-  --navy-deep:    #0d1622;
-  --navy-dark:    #141e30;
-  --navy-mid:     #1e2f4a;
-  --navy-accent:  #3f5e96;
-  --navy-light:   #5070aa;
-  --text-bright:  #e8edf5;
-  --text-muted:   #7a95b8;
-  --text-dim:     #4d6a8a;
-  --border:       rgba(63, 94, 150, 0.28);
+  --navy-deep: #0d1622;
+  --navy-dark: #141e30;
+  --navy-mid: #1e2f4a;
+  --navy-accent: #3f5e96;
+  --navy-light: #5070aa;
+  --text-bright: #e8edf5;
+  --text-muted: #7a95b8;
+  --text-dim: #4d6a8a;
+  --border: rgba(63, 94, 150, 0.28);
   --border-hover: rgba(63, 94, 150, 0.55);
-  --glass-bg:     rgba(15, 22, 38, 0.72);
-  --glass-card:   rgba(20, 30, 48, 0.85);
+  --glass-bg: rgba(15, 22, 38, 0.72);
+  --glass-card: rgba(20, 30, 48, 0.85);
+
+  --font-khmer: 'Kantumruy Pro', 'Hanuman', 'Battambang', sans-serif;
+  --font-khmer-display: 'Moul', 'Kantumruy Pro', 'Hanuman', serif;
 }
 
 /* ── Shell ── */
@@ -32,7 +37,7 @@
   gap: 8px;
   margin-bottom: 32px;
   font-size: 0.82rem;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-khmer);
   letter-spacing: 0.06em;
   flex-wrap: wrap;
 }
@@ -42,7 +47,9 @@
   text-decoration: none;
   transition: color 0.2s;
 }
-.bc-link:hover { color: var(--text-bright); }
+.bc-link:hover {
+  color: var(--text-bright);
+}
 
 .bc-sep {
   color: var(--text-dim);
@@ -56,6 +63,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 240px;
+  font-family: var(--font-khmer);
 }
 
 /* ── Two-column grid ── */
@@ -93,15 +101,18 @@
 }
 
 .gallery-main:hover {
-  box-shadow: 0 32px 64px rgba(10, 16, 28, 0.5),
-              0 0 0 1px rgba(63, 94, 150, 0.25);
+  box-shadow:
+    0 32px 64px rgba(10, 16, 28, 0.5),
+    0 0 0 1px rgba(63, 94, 150, 0.25);
 }
 
 /* subtle shimmer top edge */
 .gallery-main::before {
   content: '';
   position: absolute;
-  top: 0; left: 15%; right: 15%;
+  top: 0;
+  left: 15%;
+  right: 15%;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--navy-accent), transparent);
   opacity: 0.4;
@@ -189,7 +200,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-khmer);
   border: 1px solid rgba(63, 94, 150, 0.5);
 }
 
@@ -200,7 +211,7 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-khmer);
   border: 1px solid;
   white-space: nowrap;
 }
@@ -218,12 +229,12 @@
 
 /* Title */
 .product-title {
-  font-family: 'Kantumruy Pro', 'Hanuman', 'DM Mono', monospace;
-  font-size: 2.4rem;
-  font-weight: 800;
+  font-family: var(--font-khmer-display);
+  font-size: 2.2rem;
+  font-weight: 400;
   color: var(--text-bright);
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   margin: 0 0 18px;
 }
 
@@ -242,7 +253,7 @@
 }
 
 .section-label {
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono', 'Battambang', monospace;
   font-size: 0.68rem;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -253,8 +264,9 @@
 
 .section-body {
   color: var(--text-muted);
+  font-family: var(--font-khmer);
   font-size: 0.95rem;
-  line-height: 1.75;
+  line-height: 1.9;
   background: rgba(63, 94, 150, 0.05);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -281,14 +293,16 @@
 .inquiry-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 20%; right: 20%;
+  top: 0;
+  left: 20%;
+  right: 20%;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--navy-accent), transparent);
   opacity: 0.4;
 }
 
 .inquiry-title {
-  font-family: 'Kantumruy Pro', 'DM Mono', sans-serif;
+  font-family: var(--font-khmer);
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-bright);
@@ -299,7 +313,9 @@
   align-items: center;
   gap: 10px;
 }
-.inquiry-title i { color: var(--navy-accent); }
+.inquiry-title i {
+  color: var(--navy-accent);
+}
 
 /* Form fields */
 .field-group {
@@ -309,10 +325,10 @@
 .field-label {
   display: block;
   font-size: 0.75rem;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-khmer);
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   margin-bottom: 7px;
   font-weight: 700;
 }
@@ -325,7 +341,7 @@
 }
 
 .field-input {
-  font-family: 'Kantumruy Pro', 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-khmer);
   width: 100%;
   padding: 12px 18px;
   background: rgba(13, 22, 34, 0.7);
@@ -337,7 +353,10 @@
   box-sizing: border-box;
   outline: none;
 }
-.field-input::placeholder { color: rgba(63, 94, 150, 0.38); }
+.field-input::placeholder {
+  color: rgba(63, 94, 150, 0.38);
+  font-family: var(--font-khmer);
+}
 .field-input:focus {
   border-color: var(--navy-accent);
   background: rgba(63, 94, 150, 0.07);
@@ -359,15 +378,15 @@
 .error-msg {
   display: block;
   color: #f87171;
-  font-size: 11.5px;
+  font-size: 12px;
   margin-top: 5px;
   margin-left: 14px;
-  font-family: 'Kantumruy Pro', sans-serif;
+  font-family: var(--font-khmer);
 }
 
 /* Send button */
 .send-btn {
-  font-family: 'Kantumruy Pro', 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-khmer);
   width: 100%;
   background: linear-gradient(135deg, #3f5e96 0%, #2d4a7a 100%);
   padding: 14px;
@@ -390,19 +409,29 @@
 .send-btn::before {
   content: '';
   position: absolute;
-  top: 0; left: -100%;
-  width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
   transition: left 0.5s ease;
 }
-.send-btn:hover::before { left: 160%; }
+.send-btn:hover::before {
+  left: 160%;
+}
 .send-btn:hover {
   background: linear-gradient(135deg, #4d70aa 0%, #3a5a8a 100%);
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(63, 94, 150, 0.4);
 }
-.send-btn:active { transform: translateY(0); }
-.send-btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+.send-btn:active {
+  transform: translateY(0);
+}
+.send-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
 
 /* Back button */
 .back-btn {
@@ -446,6 +475,7 @@
 .not-found h2 {
   color: var(--text-bright);
   margin-bottom: 24px;
+  font-family: var(--font-khmer);
 }
 
 /* ══════════════════════════════
@@ -453,12 +483,13 @@
    ══════════════════════════════ */
 .status-toast {
   position: fixed;
-  top: 20px; left: 50%;
+  top: 20px;
+  left: 50%;
   transform: translateX(-50%);
   padding: 12px 26px;
   border-radius: 50px;
   color: #e8edf5;
-  font-family: 'Kantumruy Pro', sans-serif;
+  font-family: var(--font-khmer);
   font-size: 14px;
   z-index: 10000;
   display: flex;
@@ -484,8 +515,10 @@
    ══════════════════════════════ */
 .back-to-top {
   position: fixed;
-  bottom: 30px; right: 30px;
-  width: 48px; height: 48px;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
   background: rgba(63, 94, 150, 0.85);
   color: #e8edf5;
   border: 1px solid var(--border-hover);
@@ -496,13 +529,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0; visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 4px 20px rgba(63, 94, 150, 0.3);
   backdrop-filter: blur(8px);
 }
 .back-to-top.show {
-  opacity: 1; visibility: visible;
+  opacity: 1;
+  visibility: visible;
   transform: translateY(-8px);
 }
 .back-to-top:hover {
@@ -515,21 +550,44 @@
    ANIMATIONS
    ══════════════════════════════ */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25%       { transform: translateX(-5px); }
-  75%       { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 @keyframes slideDownFade {
-  from { top: -60px; opacity: 0; }
-  to   { top: 20px;  opacity: 1; }
+  from {
+    top: -60px;
+    opacity: 0;
+  }
+  to {
+    top: 20px;
+    opacity: 1;
+  }
 }
 
 /* ══════════════════════════════
@@ -540,28 +598,56 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .gallery-col { position: static; }
-  .product-title { font-size: 1.9rem; }
+  .gallery-col {
+    position: static;
+  }
+  .product-title {
+    font-size: 1.8rem;
+  }
 }
 
 @media (max-width: 600px) {
-  .detail-shell { padding: 16px 16px 64px; }
-  .product-title { font-size: 1.6rem; }
-  .gallery-main { padding: 24px; min-height: 260px; }
-  .inquiry-card { padding: 18px; }
+  .detail-shell {
+    padding: 16px 16px 64px;
+  }
+  .product-title {
+    font-size: 1.5rem;
+  }
+  .gallery-main {
+    padding: 24px;
+    min-height: 260px;
+  }
+  .inquiry-card {
+    padding: 18px;
+  }
   .status-toast {
-    top: auto; bottom: 30px;
-    width: 90%; max-width: 350px;
-    white-space: normal; text-align: center;
+    top: auto;
+    bottom: 30px;
+    width: 90%;
+    max-width: 350px;
+    white-space: normal;
+    text-align: center;
     justify-content: center;
-    padding: 14px 18px; font-size: 13px;
+    padding: 14px 18px;
+    font-size: 13px;
     border-radius: 16px;
     animation: slideUpFade 0.4s ease-out;
   }
-  .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
 }
 
 @keyframes slideUpFade {
-  from { bottom: -50px; opacity: 0; }
-  to   { bottom: 30px; opacity: 1; }
+  from {
+    bottom: -50px;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }

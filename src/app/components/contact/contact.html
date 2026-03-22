@@ -1,9 +1,15 @@
 <div class="contact-wrapper">
   <!-- Section Header -->
   <div class="contact-header" data-aos="fade-up">
-    <span class="contact-tagline">REACH OUT</span>
-    <h2>Get in Touch <span class="khmer">ទំនាក់ទំនង</span></h2>
-    <p>យើងនឹងឆ្លើយតបទៅអ្នកក្នុងរយៈពេលតិចជាង ២៤ ម៉ោង</p>
+    <span class="contact-tagline">{{ lang === 'en' ? 'REACH OUT' : 'ទំនាក់ទំនងមកយើង' }}</span>
+    <h2>{{ lang === 'en' ? 'Get in Touch' : 'ទំនាក់ទំនង' }}</h2>
+    <p>
+      {{
+        lang === 'en'
+          ? 'We will respond to you within less than 24 hours.'
+          : 'យើងនឹងឆ្លើយតបទៅអ្នកក្នុងរយៈពេលតិចជាង ២៤ ម៉ោង'
+      }}
+    </p>
   </div>
 
   <!-- Info + Map Row -->
@@ -13,28 +19,28 @@
       <div class="info-item">
         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
         <div>
-          <span class="info-label">អាសយដ្ឋាន</span>
+          <span class="info-label">{{ lang === 'en' ? 'Address' : 'អាសយដ្ឋាន' }}</span>
           <p>112 Street 97, Boeung Trabek, Chamkarmon, Phnom Penh, Cambodia</p>
         </div>
       </div>
       <div class="info-item">
         <div class="info-icon"><i class="fas fa-phone"></i></div>
         <div>
-          <span class="info-label">ទូរស័ព្ទ</span>
+          <span class="info-label">{{ lang === 'en' ? 'Phone' : 'ទូរស័ព្ទ' }}</span>
           <p>+855 12 345 678</p>
         </div>
       </div>
       <div class="info-item">
         <div class="info-icon"><i class="fas fa-envelope"></i></div>
         <div>
-          <span class="info-label">អ៊ីម៉ែល</span>
-          <p>info@Z’SHOP.com.kh</p>
+          <span class="info-label">{{ lang === 'en' ? 'Email' : 'អ៊ីម៉ែល' }}</span>
+          <p>info@Z'SHOP.com.kh</p>
         </div>
       </div>
       <div class="info-item">
         <div class="info-icon"><i class="fas fa-clock"></i></div>
         <div>
-          <span class="info-label">ម៉ោងធ្វើការ</span>
+          <span class="info-label">{{ lang === 'en' ? 'Working Hours' : 'ម៉ោងធ្វើការ' }}</span>
           <p>Mon – Fri: 9:00 AM – 6:00 PM</p>
         </div>
       </div>
@@ -56,7 +62,11 @@
   <!-- Success Alert -->
   <div *ngIf="successMessage" class="success-alert" data-aos="fade-up">
     <i class="fas fa-circle-check"></i>
-    សូមអរគុណ! សាររបស់អ្នកត្រូវបានផ្ញើជូនរួចរាល់ហើយ។ យើងនឹងឆ្លើយតបឆាប់ៗ។
+    {{
+      lang === 'en'
+        ? 'Thank you! Your message has been sent. We will respond shortly.'
+        : 'សូមអរគុណ! សាររបស់អ្នកត្រូវបានផ្ញើជូនរួចរាល់ហើយ។ យើងនឹងឆ្លើយតបឆាប់ៗ។'
+    }}
   </div>
 
   <!-- Contact Form -->
@@ -69,52 +79,81 @@
   >
     <div class="form-row">
       <div class="form-group">
-        <label>ឈ្មោះ <span class="en">Name</span></label>
-        <input formControlName="name" placeholder="Your full name" />
+        <label>{{ lang === 'en' ? 'Name' : 'ឈ្មោះ' }}</label>
+        <input
+          formControlName="name"
+          [placeholder]="lang === 'en' ? 'Your full name' : 'ឈ្មោះពេញរបស់អ្នក'"
+        />
         <small
           *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
           class="error"
         >
-          <i class="fas fa-triangle-exclamation"></i> សូមបញ្ចូលឈ្មោះ យ៉ាងហោចណាស់ ៣ តួអក្សរ។
+          <i class="fas fa-triangle-exclamation"></i>
+          {{
+            lang === 'en'
+              ? 'Please enter your name (at least 3 characters).'
+              : 'សូមបញ្ចូលឈ្មោះ យ៉ាងហោចណាស់ ៣ តួអក្សរ។'
+          }}
         </small>
       </div>
       <div class="form-group">
-        <label>លេខទូរស័ព្ទ <span class="en">Phone</span></label>
+        <label>{{ lang === 'en' ? 'Phone' : 'លេខទូរស័ព្ទ' }}</label>
         <input type="tel" formControlName="phone" placeholder="+855 xx xxx xxx" />
         <small
           *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched"
           class="error"
         >
-          <i class="fas fa-triangle-exclamation"></i> លេខទូរស័ព្ទត្រូវមានយ៉ាងតិច ៩ ខ្ទង់។
+          <i class="fas fa-triangle-exclamation"></i>
+          {{
+            lang === 'en'
+              ? 'Phone number must be at least 9 digits.'
+              : 'លេខទូរស័ព្ទត្រូវមានយ៉ាងតិច ៩ ខ្ទង់។'
+          }}
         </small>
       </div>
     </div>
 
     <div class="form-group">
-      <label>អ៊ីម៉ែល <span class="en">Email</span></label>
+      <label>{{ lang === 'en' ? 'Email' : 'អ៊ីម៉ែល' }}</label>
       <input type="email" formControlName="email" placeholder="you@example.com" />
       <small
         *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
         class="error"
       >
-        <i class="fas fa-triangle-exclamation"></i> សូមបញ្ចូលអ៊ីម៉ែលត្រឹមត្រូវ។
+        <i class="fas fa-triangle-exclamation"></i>
+        {{ lang === 'en' ? 'Please enter a valid email address.' : 'សូមបញ្ចូលអ៊ីម៉ែលត្រឹមត្រូវ។' }}
       </small>
     </div>
 
     <div class="form-group">
-      <label>សារ <span class="en">Message</span></label>
-      <textarea formControlName="message" rows="5" placeholder="How can we help you?"></textarea>
+      <label>{{ lang === 'en' ? 'Message' : 'សារ' }}</label>
+      <textarea
+        formControlName="message"
+        rows="5"
+        [placeholder]="lang === 'en' ? 'How can we help you?' : 'យើងអាចជួយអ្នកដោយរបៀបណា?'"
+      ></textarea>
       <small
         *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
         class="error"
       >
-        <i class="fas fa-triangle-exclamation"></i> សូមសរសេរសារ (អតិបរមា ៥០០ តួអក្សរ)។
+        <i class="fas fa-triangle-exclamation"></i>
+        {{
+          lang === 'en'
+            ? 'Please write a message (max 500 characters).'
+            : 'សូមសរសេរសារ (អតិបរមា ៥០០ តួអក្សរ)។'
+        }}
       </small>
     </div>
 
     <button type="submit" [disabled]="contactForm.invalid || isSending">
-      <span *ngIf="!isSending"> <i class="fas fa-paper-plane"></i> Send Message </span>
-      <span *ngIf="isSending"> <i class="fas fa-circle-notch fa-spin"></i> កំពុងផ្ញើ... </span>
+      <span *ngIf="!isSending">
+        <i class="fas fa-paper-plane"></i>
+        {{ lang === 'en' ? 'Send Message' : 'ផ្ញើសារ' }}
+      </span>
+      <span *ngIf="isSending">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        {{ lang === 'en' ? 'Sending...' : 'កំពុងផ្ញើ...' }}
+      </span>
     </button>
   </form>
 </div>

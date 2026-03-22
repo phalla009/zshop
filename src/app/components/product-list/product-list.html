@@ -1,13 +1,14 @@
 <div class="featured-header">
   <h2 class="featured-title">{{ pageTitle() }}</h2>
 </div>
+
 <div class="search-section">
   <div class="search-wrapper">
-    <label class="search-label">ស្វែងរក</label>
+    <label class="search-label">{{ lang === 'en' ? 'Search' : 'ស្វែងរក' }}</label>
     <i class="fa-solid fa-magnifying-glass search-icon"></i>
     <input
       type="text"
-      placeholder="Search by name..."
+      [placeholder]="lang === 'en' ? 'Search by name...' : 'ស្វែងរកតាមឈ្មោះ...'"
       (input)="updateSearch($event)"
       [value]="searchTerm()"
       class="search-input"
@@ -20,7 +21,7 @@
   @if (filteredProducts().length === 0) {
     <div class="no-product move-right">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <h3>Product not found</h3>
+      <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
     </div>
   }
   @for (item of filteredProducts().slice(0, 8); track item.id) {
@@ -41,7 +42,9 @@
       <div class="product-info">
         <h3>{{ item.name }}</h3>
         <div class="divider"></div>
-        <p class="specs-label">Technical Specifications:</p>
+        <p class="specs-label">
+          {{ lang === 'en' ? 'Technical Specifications:' : 'លក្ខណៈបច្ចេកទេស:' }}
+        </p>
         <p class="specs-text">{{ item.specs }}</p>
       </div>
     </div>
@@ -50,13 +53,13 @@
 
 <!-- ══════════════ LATEST PRODUCTS ══════════════ -->
 <div class="featured-header">
-  <h2 class="featured-title">LATEST PRODUCTS</h2>
+  <h2 class="featured-title">{{ lang === 'en' ? 'LATEST PRODUCTS' : 'ផលិតផលថ្មីៗ' }}</h2>
 </div>
 <section class="blog-section">
   @if (filteredProducts().length === 0) {
     <div class="no-product">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <h3>Product not found</h3>
+      <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
     </div>
   }
   <div class="blog-grid">
@@ -86,13 +89,13 @@
 
 <!-- ══════════════ FEATURED PRODUCTS ══════════════ -->
 <div class="featured-header">
-  <h2 class="featured-title">FEATURED PRODUCTS</h2>
+  <h2 class="featured-title">{{ lang === 'en' ? 'FEATURED PRODUCTS' : 'ផលិតផលពិសេស' }}</h2>
 </div>
 <section class="product-grid">
   @if (filteredProducts().length === 0) {
     <div class="no-product">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <h3>Product not found</h3>
+      <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
     </div>
   }
   @for (item of filteredProducts().slice(8, -6); track item.id) {
@@ -113,7 +116,9 @@
       <div class="product-info">
         <h3>{{ item.name }}</h3>
         <div class="divider"></div>
-        <p class="specs-label">Technical Specifications:</p>
+        <p class="specs-label">
+          {{ lang === 'en' ? 'Technical Specifications:' : 'លក្ខណៈបច្ចេកទេស:' }}
+        </p>
         <p class="specs-text">{{ item.specs }}</p>
       </div>
     </div>

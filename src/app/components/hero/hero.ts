@@ -1,12 +1,11 @@
 import { Component, HostListener, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Contact } from '../contact/contact';
-import { ProductListComponent } from '../product-list/product-list';
+import { LangService } from '../../services/Lang';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, Contact, ProductListComponent],
+  imports: [CommonModule],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
@@ -14,41 +13,60 @@ export class Hero implements AfterViewInit, OnDestroy {
   isShow: boolean = false;
   private observer!: IntersectionObserver;
 
+  constructor(public langService: LangService) {}
+
+  get lang() {
+    return this.langService.lang();
+  }
+
   blogData = {
     header: {
-      tagline: 'LATEST UPDATES',
-      name: 'ចំណេះដឹង និងប្លុកម៉ូដទាន់សម័យ',
-      desc: 'តាមដានរាល់និន្នាការសម្លៀកបំពាក់ ស្បែកជើង និងនាឡិកាដៃដែលមានប្រជាប្រិយភាពបំផុត។',
+      taglineEn: 'LATEST UPDATES',
+      taglineKh: 'ព័ត៌មានថ្មីៗ',
+      nameEn: 'Knowledge & Modern Fashion Blog',
+      nameKh: 'ចំណេះដឹង និងប្លុកម៉ូដទាន់សម័យ',
+      descEn: 'Follow the most popular clothing, shoes, and watch trends.',
+      descKh: 'តាមដានរាល់និន្នាការសម្លៀកបំពាក់ ស្បែកជើង និងនាឡិកាដៃដែលមានប្រជាប្រិយភាពបំផុត។',
     },
     articles: [
       {
         id: 'post1',
         category: 'Clothing',
         date: 'Feb 14, 2026',
-        name: 'ឈុតសម្លៀកបំពាក់បែបផ្លូវការ (Professional Business Attire)',
-        shortDesc: 'បង្កើនទំនុកចិត្ត និងភាពថ្លៃថ្នូរក្នុងការងារ...',
-        fullDesc:
-          'ការជ្រើសរើសឈុតសម្លៀកបំពាក់ឱ្យបានត្រឹមត្រូវ ជួយបង្កើនទំនុកចិត្ត និងភាពអាជីពរបស់អ្នកនៅក្នុងកិច្ចប្រជុំ ឬកម្មវិធីសំខាន់ៗផ្សេងៗ។',
+        nameEn: 'Professional Business Attire',
+        nameKh: 'ឈុតសម្លៀកបំពាក់បែបផ្លូវការ',
+        shortDescEn: 'Boost your confidence and elegance at work...',
+        shortDescKh: 'បង្កើនទំនុកចិត្ត និងភាពថ្លៃថ្នូរក្នុងការងារ...',
+        fullDescEn:
+          'Choosing the right outfit boosts your confidence and professionalism in meetings and important events.',
+        fullDescKh:
+          'ការជ្រើសរើសឈុតសម្លៀកបំពាក់ឱ្យបានត្រឹមត្រូវ ជួយបង្កើនទំនុកចិត្ត និងភាពអាជីពរបស់អ្នក។',
         img: '/images/fashion/clothing/15.jpg',
       },
       {
         id: 'post2',
         category: 'Shoes',
         date: 'Feb 14, 2026',
-        name: 'ស្បែកជើងប៉ាត់តាទំនើប (Premium Sneakers)',
-        shortDesc: 'ផាសុកភាព និងស្ទីលប្លែកសម្រាប់ជីវិតប្រចាំថ្ងៃ...',
-        fullDesc:
-          'ស្បែកជើងប៉ាត់តាដែលរួមបញ្ចូលគ្នានូវបច្ចេកវិទ្យាទប់ទល់នឹងការប៉ះទង្គិច និងការរចនាម៉ូដដ៏ទាក់ទាញ សម្រាប់តម្រូវការដើរលេង និងហាត់ប្រាណ។',
+        nameEn: 'Premium Sneakers',
+        nameKh: 'ស្បែកជើងប៉ាត់តាទំនើប',
+        shortDescEn: 'Comfort and unique style for everyday life...',
+        shortDescKh: 'ផាសុកភាព និងស្ទីលប្លែកសម្រាប់ជីវិតប្រចាំថ្ងៃ...',
+        fullDescEn:
+          'Sneakers combining impact-resistant technology and attractive design for leisure and exercise.',
+        fullDescKh: 'ស្បែកជើងប៉ាត់តាដែលរួមបញ្ចូលគ្នានូវបច្ចេកវិទ្យា និងការរចនាម៉ូដដ៏ទាក់ទាញ។',
         img: '/images/fashion/shoes/12.jpg',
       },
       {
         id: 'post3',
         category: 'Watches',
         date: 'Feb 14, 2026',
-        name: 'នាឡិកាដៃបុរស-នារី (Classic & Smart Watches)',
-        shortDesc: 'គ្រឿងអលង្ការសម្រាប់កដៃដែលមិនអាចខ្វះបាន...',
-        fullDesc:
-          'ការរចនាម៉ូដនាឡិកាដៃដែលឆ្លុះបញ្ចាំងពីបុគ្គលិកលក្ខណៈ ជាមួយនឹងមុខងារទំនើបៗ និងភាពធន់ដែលអាចប្រើប្រាស់បានយូរអង្វែង។',
+        nameEn: 'Classic & Smart Watches',
+        nameKh: 'នាឡិកាដៃបុរស-នារី',
+        shortDescEn: 'The essential wrist accessory you cannot miss...',
+        shortDescKh: 'គ្រឿងអលង្ការសម្រាប់កដៃដែលមិនអាចខ្វះបាន...',
+        fullDescEn:
+          'Watch designs reflecting personality with modern features and long-lasting durability.',
+        fullDescKh: 'ការរចនាម៉ូដនាឡិកាដៃឆ្លុះបញ្ចាំងពីបុគ្គលិកលក្ខណៈ ជាមួយនឹងមុខងារទំនើបៗ។',
         img: '/images/fashion/watches/15.jpg',
       },
     ],
@@ -60,14 +78,11 @@ export class Hero implements AfterViewInit, OnDestroy {
     this.expandedCards[cardId] = !this.expandedCards[cardId];
   }
 
-  // ─── Scroll-triggered animations ─────────────────────────
   ngAfterViewInit(): void {
-    // Hero elements animate immediately on load (they're above the fold)
     document.querySelectorAll('.hero [data-aos]').forEach((el, i) => {
       setTimeout(() => el.classList.add('aos-animate'), i * 150);
     });
 
-    // Everything else triggers on scroll
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -88,7 +103,6 @@ export class Hero implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.observer?.disconnect();
   }
-  // ─────────────────────────────────────────────────────────
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -98,5 +112,4 @@ export class Hero implements AfterViewInit, OnDestroy {
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  
 }

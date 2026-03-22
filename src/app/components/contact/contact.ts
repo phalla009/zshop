@@ -1,8 +1,9 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
 import { environment } from '../../../environments/environment';
+import { LangService } from '../../services/Lang';
 
 @Component({
   selector: 'app-contact',
@@ -12,11 +13,16 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./contact.css'],
 })
 export class Contact implements AfterViewInit, OnDestroy {
+  private langService = inject(LangService);
   contactForm: FormGroup;
   successMessage = false;
   isSending = false;
 
   private observer!: IntersectionObserver;
+
+  get lang() {
+    return this.langService.lang();
+  }
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({

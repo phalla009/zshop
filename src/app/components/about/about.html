@@ -1,88 +1,60 @@
 <div class="about-page">
+  <!-- ── Intro ── -->
   <section class="intro">
     <div class="hero" data-aos="fade-right">
-      <span class="section-label">01 / About</span>
+      <span class="section-label">01 / {{ lang === 'en' ? 'About' : 'អំពីយើង' }}</span>
       <h2>
-        About Us
-        <span class="khmer-font">អំពីយើង</span>
+        {{ lang === 'en' ? 'About Us' : 'អំពីយើង' }}
       </h2>
-      <p>We create amazing web applications with a focus on design and performance.</p>
-      <p class="khmer-font">
-        យើងបង្កើតកម្មវិធីគេហទំព័រដ៏អស្ចារ្យ ដោយផ្តោតសំខាន់លើការរចនា និងប្រសិទ្ធភាពខ្ពស់។
+      <p>
+        {{
+          lang === 'en'
+            ? 'We create amazing web applications with a focus on design and performance.'
+            : 'យើងបង្កើតកម្មវិធីគេហទំព័រដ៏អស្ចារ្យ ដោយផ្តោតសំខាន់លើការរចនា និងប្រសិទ្ធភាពខ្ពស់។'
+        }}
       </p>
     </div>
 
     <div class="mission" data-aos="fade-left">
-      <span class="section-label">02 / Mission</span>
+      <span class="section-label">02 / {{ lang === 'en' ? 'Mission' : 'បេសកកម្ម' }}</span>
       <h2>
-        Our Mission
-        <span class="khmer-font">បេសកកម្មរបស់យើង</span>
+        {{ lang === 'en' ? 'Our Mission' : 'បេសកកម្មរបស់យើង' }}
       </h2>
-      <p>To deliver high-quality digital experiences that delight users and empower businesses.</p>
-      <p class="khmer-font">
-        ផ្តល់ជូននូវបទពិសោធន៍ឌីជីថលដែលមានគុណភាពខ្ពស់ ដើម្បីបំពេញចិត្តអ្នកប្រើប្រាស់
-        និងពង្រឹងសមត្ថភាពអាជីវកម្ម។
+      <p>
+        {{
+          lang === 'en'
+            ? 'To deliver high-quality digital experiences that delight users and empower businesses.'
+            : 'ផ្តល់ជូននូវបទពិសោធន៍ឌីជីថលដែលមានគុណភាពខ្ពស់ ដើម្បីបំពេញចិត្តអ្នកប្រើប្រាស់ និងពង្រឹងសមត្ថភាពអាជីវកម្ម។'
+        }}
       </p>
     </div>
   </section>
 
   <hr class="separator" data-aos="fade-up" />
 
+  <!-- ── Team ── -->
   <section class="team">
-    <span class="section-label" data-aos="fade-up">03 / Team</span>
+    <span class="section-label" data-aos="fade-up"
+      >03 / {{ lang === 'en' ? 'Team' : 'ក្រុមការងារ' }}</span
+    >
     <h2 data-aos="fade-up">
-      Meet the Team
-      <span class="khmer-font">ជួបជាមួយក្រុមការងារ</span>
+      {{ lang === 'en' ? 'Meet the Team' : 'ជួបជាមួយក្រុមការងារ' }}
     </h2>
 
     <div class="team-cards">
-      <div class="card" data-aos="zoom-in" data-aos-delay="100">
-        <span class="card-number">01</span>
-        <div class="img-container">
-          <img src="/images/logo.png" alt="HEANG PHALLA" />
+      @for (member of team; track member.num) {
+        <div class="card" data-aos="zoom-in" [attr.data-aos-delay]="member.delay">
+          <span class="card-number">{{ member.num }}</span>
+          <div class="img-container">
+            <img src="/images/logo.png" [alt]="member.name" />
+          </div>
+          <h3>{{ member.name }}</h3>
+          <p class="role">{{ member.role }}</p>
+          <p class="description" [class.khmer-font]="lang === 'kh'">
+            {{ lang === 'en' ? member.descEn : member.descKh }}
+          </p>
         </div>
-        <h3>HEANG PHALLA</h3>
-        <p class="role">Frontend Developer</p>
-        <p class="description khmer-font">
-          ជំនាញខាងរចនា Interface និងបទពិសោធន៍អ្នកប្រើប្រាស់ឱ្យកាន់តែរស់រវើក។
-        </p>
-      </div>
-
-      <div class="card" data-aos="zoom-in" data-aos-delay="200">
-        <span class="card-number">02</span>
-        <div class="img-container">
-          <img src="/images/logo.png" alt="lAA Z3E" />
-        </div>
-        <h3>lAA Z3E</h3>
-        <p class="role">Backend Developer</p>
-        <p class="description khmer-font">
-          អ្នកជំនាញផ្នែកគ្រប់គ្រងទិន្នន័យ និងប្រព័ន្ធសុវត្ថិភាពពីក្រោយខ្នង។
-        </p>
-      </div>
-
-      <div class="card" data-aos="zoom-in" data-aos-delay="300">
-        <span class="card-number">03</span>
-        <div class="img-container">
-          <img src="/images/logo.png" alt="Jane Smith" />
-        </div>
-        <h3>Jane Smith</h3>
-        <p class="role">UI/UX Designer</p>
-        <p class="description khmer-font">
-          បង្កើតនូវគំនូសព្រាង និងការរចនាដែលផ្តល់ភាពងាយស្រួលដល់អ្នកប្រើប្រាស់។
-        </p>
-      </div>
-
-      <div class="card" data-aos="zoom-in" data-aos-delay="400">
-        <span class="card-number">04</span>
-        <div class="img-container">
-          <img src="/images/logo.png" alt="ProPower" />
-        </div>
-        <h3>ProPower</h3>
-        <p class="role">Project Manager</p>
-        <p class="description khmer-font">
-          ដឹកនាំគម្រោង និងធានាថាការងារត្រូវបានបញ្ចប់ទាន់ពេលវេលា និងមានគុណភាព។
-        </p>
-      </div>
+      }
     </div>
   </section>
 </div>

@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="logo">
     <img src="/images/logo.png" alt="MyStore Logo" />
-    Z’SHOP <span class="country-name">Cambodia</span>
+    Z'SHOP <span class="country-name">Cambodia</span>
   </div>
 
   <div class="menu-toggle" (click)="toggleMenu()">
@@ -11,12 +11,14 @@
   </div>
 
   <ul class="nav-links" [class.active]="isOpen">
-    <li><a routerLink="/" (click)="closeMenu()">HOME</a></li>
+    <li>
+      <a routerLink="/" (click)="closeMenu()">{{ lang === 'en' ? 'HOME' : 'ទំព័រដើម' }}</a>
+    </li>
 
     <!-- ALL CATEGORIES -->
     <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn" (click)="toggleCategory($event)">
-        ALL CATEGORIES
+        {{ lang === 'en' ? 'ALL CATEGORIES' : 'ប្រភេទទាំងអស់' }}
         <span class="dropdown-icon" [class.rotate]="isCategoryOpen">&#9662;</span>
       </a>
 
@@ -28,8 +30,8 @@
             class="submenu-trigger"
             (click)="toggleCategorySub($event, 'clothing')"
           >
-            <span class="cat-label">សម្លៀកបំពាក់</span>
-            <span class="khmer-sub">Clothing</span>
+            <span class="cat-label">{{ lang === 'en' ? 'Clothing' : 'សម្លៀកបំពាក់' }}</span>
+            <span class="khmer-sub">{{ lang === 'en' ? 'សម្លៀកបំពាក់' : 'Clothing' }}</span>
             <span class="submenu-arrow" [class.rotate]="activeCategory === 'clothing'"
               >&#8250;</span
             >
@@ -37,12 +39,14 @@
           <ul class="gender-list">
             <li>
               <a routerLink="/shop/សម្លៀកបំពាក់/men" (click)="closeMenu()">
-                MEN <span class="gender-kh">បុរស</span>
+                {{ lang === 'en' ? 'MEN' : 'បុរស' }}
+                <span class="gender-kh">{{ lang === 'en' ? 'បុរស' : 'MEN' }}</span>
               </a>
             </li>
             <li>
               <a routerLink="/shop/សម្លៀកបំពាក់/women" (click)="closeMenu()">
-                WOMEN <span class="gender-kh">នារី</span>
+                {{ lang === 'en' ? 'WOMEN' : 'នារី' }}
+                <span class="gender-kh">{{ lang === 'en' ? 'នារី' : 'WOMEN' }}</span>
               </a>
             </li>
           </ul>
@@ -55,19 +59,21 @@
             class="submenu-trigger"
             (click)="toggleCategorySub($event, 'watches')"
           >
-            <span class="cat-label">នាឡិកា</span>
-            <span class="khmer-sub">Watches</span>
+            <span class="cat-label">{{ lang === 'en' ? 'Watches' : 'នាឡិកា' }}</span>
+            <span class="khmer-sub">{{ lang === 'en' ? 'នាឡិកា' : 'Watches' }}</span>
             <span class="submenu-arrow" [class.rotate]="activeCategory === 'watches'">&#8250;</span>
           </a>
           <ul class="gender-list">
             <li>
               <a routerLink="/shop/នាឡិកា/men" (click)="closeMenu()">
-                MEN <span class="gender-kh">បុរស</span>
+                {{ lang === 'en' ? 'MEN' : 'បុរស' }}
+                <span class="gender-kh">{{ lang === 'en' ? 'បុរស' : 'MEN' }}</span>
               </a>
             </li>
             <li>
               <a routerLink="/shop/នាឡិកា/women" (click)="closeMenu()">
-                WOMEN <span class="gender-kh">នារី</span>
+                {{ lang === 'en' ? 'WOMEN' : 'នារី' }}
+                <span class="gender-kh">{{ lang === 'en' ? 'នារី' : 'WOMEN' }}</span>
               </a>
             </li>
           </ul>
@@ -80,19 +86,21 @@
             class="submenu-trigger"
             (click)="toggleCategorySub($event, 'shoes')"
           >
-            <span class="cat-label">ស្បែកជើង</span>
-            <span class="khmer-sub">Shoes</span>
+            <span class="cat-label">{{ lang === 'en' ? 'Shoes' : 'ស្បែកជើង' }}</span>
+            <span class="khmer-sub">{{ lang === 'en' ? 'ស្បែកជើង' : 'Shoes' }}</span>
             <span class="submenu-arrow" [class.rotate]="activeCategory === 'shoes'">&#8250;</span>
           </a>
           <ul class="gender-list">
             <li>
               <a routerLink="/shop/ស្បែកជើង/men" (click)="closeMenu()">
-                MEN <span class="gender-kh">បុរស</span>
+                {{ lang === 'en' ? 'MEN' : 'បុរស' }}
+                <span class="gender-kh">{{ lang === 'en' ? 'បុរស' : 'MEN' }}</span>
               </a>
             </li>
             <li>
               <a routerLink="/shop/ស្បែកជើង/women" (click)="closeMenu()">
-                WOMEN <span class="gender-kh">នារី</span>
+                {{ lang === 'en' ? 'WOMEN' : 'នារី' }}
+                <span class="gender-kh">{{ lang === 'en' ? 'នារី' : 'WOMEN' }}</span>
               </a>
             </li>
           </ul>
@@ -100,8 +108,29 @@
       </ul>
     </li>
 
-    <li><a routerLink="/product" (click)="closeMenu()">PRODUCTS</a></li>
-    <li><a routerLink="/about" (click)="closeMenu()">ABOUT</a></li>
-    <li><a routerLink="/contact" (click)="closeMenu()">CONTACT</a></li>
+    <li>
+      <a routerLink="/product" (click)="closeMenu()">{{ lang === 'en' ? 'PRODUCTS' : 'ផលិតផល' }}</a>
+    </li>
+    <li>
+      <a routerLink="/about" (click)="closeMenu()">{{ lang === 'en' ? 'ABOUT' : 'អំពីយើង' }}</a>
+    </li>
+    <li>
+      <a routerLink="/contact" (click)="closeMenu()">{{
+        lang === 'en' ? 'CONTACT' : 'ទំនាក់ទំនង'
+      }}</a>
+    </li>
+
+    <!-- Language Switcher — (click) on the div, not the li -->
+    <li class="lang-switcher">
+      <div
+        class="lang-toggle"
+        [class.khmer-active]="lang === 'kh'"
+        (click)="toggleLang(); $event.stopPropagation()"
+      >
+        <span class="lang-option lang-en" [class.active]="lang === 'en'">EN</span>
+        <span class="lang-divider">|</span>
+        <span class="lang-option lang-kh" [class.active]="lang === 'kh'">ខ្មែរ</span>
+      </div>
+    </li>
   </ul>
 </nav>
