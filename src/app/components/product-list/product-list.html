@@ -25,7 +25,6 @@
   }
   @for (item of filteredProducts().slice(0, 8); track item.id) {
     <div class="product-card" (click)="openDetails(item)">
-      <!-- Badges: category top-left, subcategory top-right -->
       <div class="product-badge">{{ item.category }}</div>
       @if (item.subcategory) {
         <div
@@ -36,7 +35,6 @@
           {{ item.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
         </div>
       }
-
       <div class="image-container">
         <img [src]="item.image[0]" [alt]="item.name" />
       </div>
@@ -63,9 +61,9 @@
   }
   <div class="blog-grid">
     @for (post of filteredProducts().slice(-6); track post.id) {
-      <div class="blog-card" (click)="openDetails(post)" style="cursor: pointer">
+      <div class="blog-card" (click)="openDetails(post)">
         <div class="blog-img-wrapper">
-          <img [src]="post.image[0]" />
+          <img [src]="post.image[0]" [alt]="post.name" />
           @if (post.subcategory) {
             <div
               class="blog-sub-badge"
@@ -79,7 +77,7 @@
         <div class="blog-content">
           <h4>{{ post.name }}</h4>
           <div class="divider"></div>
-          <p [class.show-all]="expandedCards[post.id]">{{ post.specs }}</p>
+          <p>{{ post.specs }}</p>
         </div>
       </div>
     }
@@ -109,7 +107,6 @@
           {{ item.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
         </div>
       }
-
       <div class="image-container">
         <img [src]="item.image[0]" [alt]="item.name" />
       </div>
@@ -123,124 +120,9 @@
   }
 </section>
 
+<!-- Back to top -->
 <button class="back-to-top" [class.show]="isShow" (click)="scrollToTop()">
   <i class="fa-solid fa-angles-up"></i>
 </button>
 
-@if (statusMessage) {
-  <div class="status-toast" [ngClass]="statusType">
-    <i
-      [class]="
-        statusType === 'success' ? 'fa-solid fa-circle-check' : 'fa-solid fa-triangle-exclamation'
-      "
-    ></i>
-    <span>{{ statusMessage }}</span>
-  </div>
-}
-
-<!-- ══════════════ MODAL ══════════════ -->
-@if (selectedProduct(); as product) {
-  <div class="modal-overlay" (click)="closeModal()">
-    <div class="modal-container" (click)="$event.stopPropagation()">
-      <button class="modal-close" (click)="closeModal()">&times;</button>
-
-      <div class="modal-content">
-        <div class="modal-left">
-          <img
-            [src]="selectedImg || product.image[0]"
-            alt="{{ product.name }}"
-            class="modal-main-img"
-          />
-          <div class="modal-img-wrapper">
-            <img
-              *ngFor="let imgUrl of product.image"
-              [src]="imgUrl"
-              [alt]="product.name"
-              class="modal-img"
-              (click)="selectImage(imgUrl)"
-            />
-          </div>
-        </div>
-
-        <div class="modal-right">
-          <!-- Category + subcategory badges inline -->
-          <div class="modal-badges">
-            <span class="modal-category">{{ product.category }}</span>
-            @if (product.subcategory) {
-              <span
-                class="modal-sub-badge"
-                [class.badge-men]="product.subcategory === 'men'"
-                [class.badge-women]="product.subcategory === 'women'"
-              >
-                {{ product.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
-              </span>
-            }
-          </div>
-
-          <h2 class="modal-title">{{ product.name }}</h2>
-          <div class="modal-divider"></div>
-
-          <div class="modal-section">
-            <h4>Technical Details</h4>
-            <p>{{ product.specs }}</p>
-          </div>
-
-          <div class="modal-section">
-            <h4>Description</h4>
-            <p>{{ product.description }}</p>
-          </div>
-
-          <div class="modal-section customer-form">
-            <h4 class="form-title">
-              <i class="fa-solid fa-address-card"></i> ព័ត៌មានទំនាក់ទំនងផ្នែកលក់
-            </h4>
-            <div class="input-group">
-              <input
-                type="text"
-                [(ngModel)]="customerName"
-                class="form-input"
-                [class.input-error]="formSubmitted && !customerName.trim()"
-                placeholder="ឈ្មោះរបស់អ្នក..."
-              />
-            </div>
-            @if (formSubmitted && !customerName.trim()) {
-              <span class="error-text">សូមបញ្ចូលឈ្មោះរបស់អ្នក!</span>
-            }
-            <div class="input-group">
-              <input
-                type="text"
-                [(ngModel)]="customerPhone"
-                class="form-input"
-                [class.input-error]="formSubmitted && !customerPhone.trim()"
-                placeholder="លេខទូរស័ព្ទ..."
-              />
-            </div>
-            @if (formSubmitted && !customerPhone.trim()) {
-              <span class="error-text">សូមបញ្ចូលលេខទូរស័ព្ទ!</span>
-            }
-            <div class="input-group">
-              <textarea
-                [(ngModel)]="customerNote"
-                class="form-input form-textarea"
-                placeholder="សារបន្ថែម (Optional)..."
-              ></textarea>
-            </div>
-          </div>
-
-          <button
-            class="inquiry-btn"
-            (click)="sendToTelegram(selectedProduct())"
-            [disabled]="isSending"
-          >
-            @if (isSending) {
-              <i class="fa-solid fa-circle-notch fa-spin"></i> កំពុងផ្ញើ...
-            } @else {
-              <i class="fa-solid fa-paper-plane"></i> ផ្ញើជូនផ្នែកលក់
-            }
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-}
 <app-footer></app-footer>

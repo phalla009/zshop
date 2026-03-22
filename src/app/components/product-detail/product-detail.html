@@ -1,0 +1,166 @@
+<!-- product-detail.html -->
+@if (product(); as product) {
+  <div class="detail-shell">
+    <!-- ── Breadcrumb ── -->
+    <nav class="breadcrumb">
+      <a routerLink="/" class="bc-link"><i class="fa-solid fa-house"></i></a>
+      <span class="bc-sep">/</span>
+      <a [routerLink]="['/category', product.category]" class="bc-link">{{ product.category }}</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">{{ product.name }}</span>
+    </nav>
+
+    <div class="detail-grid">
+      <!-- ══ LEFT — Gallery ══ -->
+      <div class="gallery-col">
+        <!-- Main image -->
+        <div class="gallery-main">
+          @if (product.subcategory) {
+            <div class="badge-row-img">
+              <span
+                class="sub-badge"
+                [class.badge-men]="product.subcategory === 'men'"
+                [class.badge-women]="product.subcategory === 'women'"
+              >
+                {{ product.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
+              </span>
+            </div>
+          }
+          <img [src]="activeImg()" [alt]="product.name" class="main-img" />
+        </div>
+
+        <!-- Thumbnail strip -->
+        @if (product.image.length > 1) {
+          <div class="thumb-strip">
+            @for (img of product.image; track img; let i = $index) {
+              <img
+                [src]="img"
+                [alt]="product.name + ' ' + (i + 1)"
+                class="thumb"
+                [class.thumb-active]="activeImg() === img"
+                (click)="selectImage(img)"
+              />
+            }
+          </div>
+        }
+      </div>
+
+      <!-- ══ RIGHT — Info + Form ══ -->
+      <div class="info-col">
+        <!-- Category + subcategory badges -->
+        <div class="badge-row">
+          <span class="cat-badge">{{ product.category }}</span>
+          @if (product.subcategory) {
+            <span
+              class="sub-badge"
+              [class.badge-men]="product.subcategory === 'men'"
+              [class.badge-women]="product.subcategory === 'women'"
+            >
+              {{ product.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
+            </span>
+          }
+        </div>
+
+        <h1 class="product-title">{{ product.name }}</h1>
+        <div class="accent-bar"></div>
+
+        <!-- Technical specs -->
+        <section class="info-section">
+          <p class="section-label">Technical Specifications</p>
+          <p class="section-body">{{ product.specs }}</p>
+        </section>
+
+        <!-- Description -->
+        <section class="info-section">
+          <p class="section-label">Description</p>
+          <p class="section-body">{{ product.description }}</p>
+        </section>
+
+        <!-- ── Inquiry form ── -->
+        <div class="inquiry-card">
+          <h3 class="inquiry-title">
+            <i class="fa-solid fa-address-card"></i>
+            ព័ត៌មានទំនាក់ទំនងផ្នែកលក់
+          </h3>
+
+          <div class="field-group">
+            <label class="field-label">ឈ្មោះ</label>
+            <input
+              type="text"
+              [(ngModel)]="customerName"
+              class="field-input"
+              [class.input-error]="formSubmitted && !customerName.trim()"
+              placeholder="ឈ្មោះរបស់អ្នក..."
+            />
+            @if (formSubmitted && !customerName.trim()) {
+              <span class="error-msg">សូមបញ្ចូលឈ្មោះរបស់អ្នក!</span>
+            }
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">លេខទូរស័ព្ទ</label>
+            <input
+              type="text"
+              [(ngModel)]="customerPhone"
+              class="field-input"
+              [class.input-error]="formSubmitted && !customerPhone.trim()"
+              placeholder="លេខទូរស័ព្ទ..."
+            />
+            @if (formSubmitted && !customerPhone.trim()) {
+              <span class="error-msg">សូមបញ្ចូលលេខទូរស័ព្ទ!</span>
+            }
+          </div>
+
+          <div class="field-group">
+            <label class="field-label"> សារបន្ថែម <span class="optional">(Optional)</span> </label>
+            <textarea
+              [(ngModel)]="customerNote"
+              class="field-input field-textarea"
+              placeholder="សារបន្ថែម..."
+            ></textarea>
+          </div>
+
+          <button class="send-btn" (click)="sendToTelegram(product)" [disabled]="isSending">
+            @if (isSending) {
+              <i class="fa-solid fa-circle-notch fa-spin"></i> កំពុងផ្ញើ...
+            } @else {
+              <i class="fa-solid fa-paper-plane"></i> ផ្ញើជូនផ្នែកលក់
+            }
+          </button>
+        </div>
+
+        <!-- Back button -->
+        <!-- <button class="back-btn" (click)="goBack()">
+          <i class="fa-solid fa-arrow-left"></i> ត្រឡប់ក្រោយ
+        </button> -->
+      </div>
+    </div>
+    <!-- /detail-grid -->
+  </div>
+  <!-- /detail-shell -->
+} @else {
+  <div class="not-found">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <h2>Product not found</h2>
+    <a routerLink="/" class="back-btn"> <i class="fa-solid fa-arrow-left"></i> Go back </a>
+  </div>
+}
+
+<!-- Status toast -->
+@if (statusMessage) {
+  <div class="status-toast" [ngClass]="statusType">
+    <i
+      [class]="
+        statusType === 'success' ? 'fa-solid fa-circle-check' : 'fa-solid fa-triangle-exclamation'
+      "
+    ></i>
+    <span>{{ statusMessage }}</span>
+  </div>
+}
+
+<!-- Back to top -->
+<button class="back-to-top" [class.show]="isShow" (click)="scrollToTop()">
+  <i class="fa-solid fa-angles-up"></i>
+</button>
+
+<app-footer></app-footer>
