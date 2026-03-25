@@ -585,7 +585,7 @@ body {
   transition: all 0.3s ease;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-family: 'DM Mono', monospace;
+  font-family: 'DM Mono','Kantumruy Pro', monospace;
 }
 
 .read-more:hover {
