@@ -124,9 +124,16 @@
     </div>
   }
 </section>
-
+<!-- In hero.html, change the view-counter div to: -->
+<div class="view-counter-wrapper">
+  <div class="view-counter">
+    <i class="fa-solid fa-eye"></i>
+    <span id="viewCount">...</span> views
+  </div>
+</div>
 <!-- Back to top -->
 <button class="back-to-top" [class.show]="isShow" (click)="scrollToTop()">
   <i class="fa-solid fa-angles-up"></i>
 </button>
+
 <app-footer></app-footer>

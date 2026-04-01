@@ -6,6 +6,7 @@ import {
   HostListener,
   AfterViewInit,
   AfterViewChecked,
+  OnInit,
   OnDestroy,
 } from '@angular/core';
 import { Footer } from '../footer/footer';
@@ -22,7 +23,7 @@ import { LangService } from '../../services/Lang';
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.css'],
 })
-export class ProductListComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
+export class ProductListComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   expandedCards: { [key: string]: boolean } = {};
   private productService = inject(Productservice);
   private route = inject(ActivatedRoute);
@@ -38,6 +39,13 @@ export class ProductListComponent implements AfterViewInit, AfterViewChecked, On
     return this.langService.lang();
   }
 
+  // ─── Firebase ────────────────────────────────────────────
+  private readonly DB_URL = 'https://zshop-c7b61-default-rtdb.asia-southeast1.firebasedatabase.app';
+
+  ngOnInit(): void {
+    // reserved for future use
+  }
+
   // ─── Animation ───────────────────────────────────────────
   private cardObserver!: IntersectionObserver;
   private animatedCards = new Set<Element>();
@@ -45,6 +53,7 @@ export class ProductListComponent implements AfterViewInit, AfterViewChecked, On
   ngAfterViewInit(): void {
     this.setupCardObserver();
     this.observeCards();
+    this.updateViewCount(); // ✅ ត្រូវវាហៅនៅត្រង់នេះ ក្រោយ DOM រួចរាល់
   }
 
   ngAfterViewChecked(): void {
@@ -151,11 +160,48 @@ export class ProductListComponent implements AfterViewInit, AfterViewChecked, On
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop || window.scrollY;
     this.isShow = scrollTop > 400;
+
+    // sync view-counter show class
+    const vc = document.querySelector('.view-counter');
+    if (vc) {
+      this.isShow ? vc.classList.add('show') : vc.classList.remove('show');
+    }
   }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
     document.body.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  private async updateViewCount(): Promise<void> {
+    const el = document.getElementById('viewCount');
+    if (!el) return;
+    try {
+      const alreadyCounted = sessionStorage.getItem('viewCounted');
+
+      if (!alreadyCounted) {
+        const res = await fetch(`${this.DB_URL}/views.json?t=${Date.now()}`);
+        const data = await res.json();
+        const current = typeof data === 'number' ? data : 0;
+        const newCount = current + 1;
+
+        await fetch(`${this.DB_URL}/views.json`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newCount),
+        });
+
+        el.textContent = newCount.toLocaleString();
+        sessionStorage.setItem('viewCounted', 'true');
+      } else {
+        const res = await fetch(`${this.DB_URL}/views.json?t=${Date.now()}`);
+        const data = await res.json();
+        el.textContent = typeof data === 'number' ? data.toLocaleString() : '—';
+      }
+    } catch (err) {
+      console.error('Firebase error:', err);
+      el.textContent = '...';
+    }
   }
 }

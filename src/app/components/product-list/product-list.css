@@ -1245,3 +1245,40 @@ button,
   opacity: 1 !important;
   visibility: visible !important;
 }
+/* Add to hero.css */
+.view-counter-wrapper {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 9999;
+  margin-top: 0;
+  padding-left: 0;
+}
+.view-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  background: rgba(63, 94, 150, 0.08);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: 100px;
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+  /* Remove margin-left: 10px from old rule */
+}
+
+.view-counter svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--navy-accent); /* matches your theme instead of #00d4ff */
+  flex-shrink: 0;
+}
+
+#viewCount {
+  color: var(--text-muted);
+  font-weight: 600;
+}

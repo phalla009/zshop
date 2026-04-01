@@ -413,7 +413,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'DM Mono', 'Courier New','Kantumruy Pro', monospace;
+  font-family: 'DM Mono', 'Courier New', 'Kantumruy Pro', monospace;
   color: var(--navy-accent);
   font-weight: 600;
   text-transform: uppercase;
@@ -585,7 +585,7 @@ body {
   transition: all 0.3s ease;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-family: 'DM Mono','Kantumruy Pro', monospace;
+  font-family: 'DM Mono', 'Kantumruy Pro', monospace;
 }
 
 .read-more:hover {
