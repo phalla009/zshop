@@ -107,6 +107,7 @@
 /* ================= DROPDOWN ================= */
 .dropdown {
   position: relative;
+  top: 2px;
 }
 
 .dropdown-content {
@@ -391,7 +392,6 @@
   }
 
   .nav-links {
-    margin-right: 0;
     position: fixed;
     top: 0;
     right: -100%;
@@ -506,7 +506,7 @@
     padding: 15px 30px;
   }
   .nav-links {
-    margin-right: 20px;
+    margin-right: 0px;
     gap: 22px;
   }
 }

@@ -18,8 +18,8 @@
   --glass-bg: rgba(15, 22, 38, 0.72);
   --glass-card: rgba(20, 30, 48, 0.85);
 
-  --font-khmer: 'Kantumruy Pro', 'Hanuman', 'Battambang', sans-serif;
-  --font-khmer-display: 'Moul', 'Kantumruy Pro', 'Hanuman', serif;
+  --font-khmer: 'Battambang', sans-serif;
+  --font-khmer-display: 'Moul', serif;
 }
 
 /* ── Shell ── */
@@ -344,7 +344,7 @@
   font-family: var(--font-khmer);
   width: 100%;
   padding: 12px 18px;
-  background: rgba(13, 22, 34, 0.7);
+  background: rgba(35, 55, 81, 0.204);
   border: 1px solid rgba(63, 94, 150, 0.22);
   border-radius: 50px;
   font-size: 14px;
