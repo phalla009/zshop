@@ -1,10 +1,8 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'DM Mono', sans-serif;
 }
 
 /* ================= NAVBAR ================= */
@@ -56,7 +54,7 @@
 }
 
 .logo .country-name {
-  font-family: 'DM Mono', 'Courier New', monospace;
+  font-family: 'DM Mono', monospace;
   font-size: 10px;
   font-weight: 400;
   color: #3f5e96;
@@ -80,8 +78,7 @@
   text-decoration: none;
   color: #ffffff;
   font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.1em;
+  font-size: 14px;
   position: relative;
   transition: color 0.3s ease;
 }
@@ -164,7 +161,7 @@
   color: rgba(164, 181, 214, 0.7);
   font-weight: normal;
   margin-top: 2px;
-  font-family: 'Kantumruy Pro', 'Hanuman', sans-serif;
+  font-family: 'Kantumruy Pro', sans-serif;
   letter-spacing: 0.02em;
   transition: color 0.25s ease;
 }
@@ -226,7 +223,7 @@
   font-size: 13px;
   font-weight: 500;
   color: #ffffff;
-  font-family: 'Kantumruy Pro', 'Hanuman', sans-serif;
+  font-family: 'Kantumruy Pro', sans-serif;
   letter-spacing: 0.02em;
 }
 
@@ -262,7 +259,6 @@
   font-weight: 600;
   color: #c8d8ee;
   text-decoration: none;
-  letter-spacing: 0.12em;
   border-left: 2px solid transparent;
   transition:
     background 0.2s,
@@ -284,7 +280,7 @@
   font-size: 10px;
   font-weight: 400;
   color: rgba(164, 181, 214, 0.5);
-  font-family: 'Kantumruy Pro', 'Hanuman', sans-serif;
+  font-family: 'Kantumruy Pro', sans-serif;
   letter-spacing: 0.02em;
 }
 
@@ -324,7 +320,7 @@
 }
 
 .lang-option.lang-kh {
-  font-family: 'Kantumruy Pro', 'Hanuman', sans-serif;
+  font-family: 'Kantumruy Pro', sans-serif;
   font-size: 12px;
   letter-spacing: 0;
 }
@@ -421,7 +417,6 @@
     padding: 12px 14px;
     border-radius: 8px;
     font-size: 13px;
-    letter-spacing: 0.12em;
   }
 
   .nav-links > li > a:hover {

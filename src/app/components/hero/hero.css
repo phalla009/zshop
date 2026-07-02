@@ -417,8 +417,7 @@ body {
   color: var(--navy-accent);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 11px;
+  font-size: 14px;
   border: 1px solid var(--border);
   padding: 5px 16px;
   border-radius: 100px;

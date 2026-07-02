@@ -136,7 +136,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, AfterViewChe
     const sub = params?.['subcategory'] ?? null;
     const isEn = this.langService.lang() === 'en';
 
-    if (!cat) return isEn ? 'All Products' : 'ផលិតផលទាំងអស់';
+    if (!cat) return isEn ? 'ALL PRODUTS' : 'ផលិតផលទាំងអស់';
     if (sub) {
       const label = sub === 'men' ? (isEn ? 'Men' : 'បុរស') : isEn ? 'Women' : 'ស្ត្រី';
       return `${cat} — ${label}`;
