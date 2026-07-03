@@ -54,6 +54,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, AfterViewChe
     this.setupCardObserver();
     this.observeCards();
     this.updateViewCount(); // ✅ ត្រូវវាហៅនៅត្រង់នេះ ក្រោយ DOM រួចរាល់
+    this.startAutoplay();
   }
 
   ngAfterViewChecked(): void {
@@ -62,6 +63,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, AfterViewChe
 
   ngOnDestroy(): void {
     this.cardObserver?.disconnect();
+    clearInterval(this.autoplayId);
   }
 
   private setupCardObserver(): void {
@@ -203,5 +205,31 @@ export class ProductListComponent implements OnInit, AfterViewInit, AfterViewChe
       console.error('Firebase error:', err);
       el.textContent = '...';
     }
+  }
+
+  // ─── Hero Slider ─────────────────────────────────────────
+  heroSlides = [
+    { id: 1, image: '/images/banner-lising.jpg', title: 'Special Edition' },
+    { id: 2, image: '/images/2.jpg', title: 'New Arrivals' },
+    { id: 3, image: '/images/3.jpeg', title: 'Limited Offer' },
+  ];
+  currentSlide = signal(0);
+  private autoplayId?: ReturnType<typeof setInterval>;
+  private startAutoplay(): void {
+    this.autoplayId = setInterval(() => this.nextSlide(), 5000);
+  }
+
+  nextSlide(): void {
+    this.currentSlide.set((this.currentSlide() + 1) % this.heroSlides.length);
+  }
+
+  prevSlide(): void {
+    this.currentSlide.set(
+      (this.currentSlide() - 1 + this.heroSlides.length) % this.heroSlides.length,
+    );
+  }
+
+  goToSlide(i: number): void {
+    this.currentSlide.set(i);
   }
 }
