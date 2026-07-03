@@ -6,10 +6,21 @@ import { Hero } from './components/hero/hero';
 import { About } from './components/about/about';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
+import { Popup } from './components/popup/popup';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProductListComponent, NavbarComponent, Hero, About, Contact, Footer],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    ProductListComponent,
+    NavbarComponent,
+    Hero,
+    About,
+    Contact,
+    Footer,
+    Popup,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

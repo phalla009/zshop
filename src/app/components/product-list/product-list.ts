@@ -208,6 +208,12 @@ export class ProductListComponent implements OnInit, AfterViewInit, AfterViewChe
   }
 
   // ─── Hero Slider ─────────────────────────────────────────
+  heroSlides1 = [
+    { id: 1, image: '/images/s1.jpg', title: 'Special Edition' },
+    { id: 2, image: '/images/s2.jpg', title: 'New Arrivals' },
+    { id: 3, image: '/images/s3.jpg', title: 'Limited Offer' },
+    { id: 4, image: '/images/s4.jpg', title: 'Limited Offer' },
+  ];
   heroSlides = [
     { id: 1, image: '/images/banner-lising.jpg', title: 'Special Edition' },
     { id: 2, image: '/images/2.jpg', title: 'New Arrivals' },

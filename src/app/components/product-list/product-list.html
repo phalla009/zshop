@@ -50,7 +50,23 @@
     </div>
   }
 </section>
-
+<div class="hero-slider">
+  <div class="hero-slider-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
+    @for (slide of heroSlides1; track slide.id) {
+      <div class="hero-slide">
+        <img [src]="slide.image" [alt]="slide.title" class="hero-banner-img" />
+        <div class="hero-banner-text">
+          <h2>{{ slide.title }}</h2>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="hero-dots">
+    @for (slide of heroSlides1; track slide.id; let i = $index) {
+      <span class="hero-dot" [class.active]="i === currentSlide()" (click)="goToSlide(i)"></span>
+    }
+  </div>
+</div>
 <!-- ══════════════ LATEST PRODUCTS ══════════════ -->
 <div class="featured-header">
   <h2 class="featured-title">{{ lang === 'en' ? 'LATEST PRODUCTS' : 'ផលិតផលថ្មីៗ' }}</h2>

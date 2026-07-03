@@ -1,0 +1,33 @@
+<div class="popup-backdrop" *ngIf="isVisible" (click)="onBackdropClick($event)">
+  <div class="popup-box">
+    <button class="popup-close" (click)="close()" aria-label="Close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="popup-icon">
+      <i class="fa-solid fa-tags"></i>
+    </div>
+
+    <h2>
+      {{ lang === 'en' ? 'Special Offer!' : 'ការផ្តល់ជូនពិសេស!' }}
+    </h2>
+    <p>
+      {{
+        lang === 'en'
+          ? "Get up to 30% off on clothing, watches, and shoes this week only at Z'SHOP Cambodia!"
+          : 'ទទួលបានការបញ្ចុះតម្លៃរហូតដល់ 30% លើសម្លៀកបំពាក់ នាឡិកាដៃ និងស្បែកជើង នៅសប្តាហ៍នេះប៉ុណ្ណោះ!'
+      }}
+    </p>
+
+    <div class="popup-actions">
+      <a href="/product">
+        <button class="btn-primary" (click)="close()">
+          {{ lang === 'en' ? 'Shop Now' : 'ទិញឥឡូវនេះ' }}
+        </button>
+      </a>
+      <button class="btn-outline" (click)="close()">
+        {{ lang === 'en' ? 'Maybe Later' : 'លើកក្រោយ' }}
+      </button>
+    </div>
+  </div>
+</div>
