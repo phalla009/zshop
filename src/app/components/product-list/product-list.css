@@ -105,7 +105,10 @@
   white-space: nowrap;
   margin-right: 20px; /* ← gap before the line */
 }
-
+.featured-title i {
+  color: rgba(46, 67, 106, 0.767);
+  font-size: 20px;
+}
 .featured-header::after {
   content: '';
   flex: 1;
@@ -163,6 +166,7 @@
 }
 
 .product-card:hover {
+  cursor: pointer;
   transform: translateY(-8px);
   border-color: var(--border-hover);
   box-shadow:
@@ -175,7 +179,7 @@
   position: absolute;
   top: 14px;
   left: 14px;
-  background: rgba(63, 94, 150, 0.82);
+  background: #1e293b;
   color: #e8edf5;
   padding: 5px 12px 4px;
   border-radius: 100px;
