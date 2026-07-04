@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Hanuman:wght@100;300;400;700;900&family=Battambang:wght@100;300;400;700;900&family=Moul&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Moul&display=swap');
 
 /* ============================= */
 /* ANIMATION SYSTEM              */
@@ -39,25 +39,23 @@
 }
 
 /* ============================= */
-/* CSS VARIABLES                 */
+/* DESIGN SYSTEM VARIABLES       */
 /* ============================= */
 
 :host {
-  --navy-deep: #0d1622;
-  --navy-dark: #141e30;
-  --navy-mid: #1c2d47;
-  --navy-accent: #3f5e96;
-  --navy-light: #5070aa;
-  --text-bright: #e8edf5;
-  --text-muted: #7a95b8;
-  --text-dim: #4d6a8a;
-  --border: rgba(63, 94, 150, 0.28);
-  --border-hover: rgba(63, 94, 150, 0.55);
-  --glass-bg: rgba(15, 22, 38, 0.75);
-  --glow: rgba(63, 94, 150, 0.18);
+  /* ពណ៌បែបហាង Premium E-commerce (Warm Light / Indigo) */
+  --shop-accent: #12101eed;
+  --shop-accent-hover: #12111f;
+  --shop-muted: #64748b;
+  --text-dark: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --border: rgba(15, 23, 42, 0.06);
+  --border-hover: rgba(79, 70, 229, 0.2);
 
-  --font-khmer: 'Battambang', sans-serif;
-  --font-khmer-display: 'Moul', serif;
+  /* ប្រព័ន្ធ Font រួមបញ្ចូលគ្នា */
+  --font-khmer-body: 'Kantumruy Pro', sans-serif;
+  --font-khmer-display: 'Moul', 'Kantumruy Pro', sans-serif;
+  --font-mono-khmer: 'DM Mono', 'Kantumruy Pro', monospace;
 }
 
 /* ============================= */
@@ -68,7 +66,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(160deg, #141e30 0%, #1e2f4a 50%, #243b55 100%);
+  background: #f8fafc; /* ផ្ទៃខាងក្រោយភ្លឺស្រឡះស្អាត */
 }
 
 /* ============================= */
@@ -79,8 +77,10 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 90px 28px 110px;
-  font-family: var(--font-khmer);
-  color: var(--text-bright);
+  font-family: var(--font-khmer-body);
+  color: #334155;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ============================= */
@@ -96,12 +96,13 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Battambang', monospace;
-  font-size: 10px;
-  font-weight: 600;
+  font-family: var(--font-mono-khmer); /* ដើរទាំងអង់គ្លេស និងខ្មែរ */
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  color: var(--navy-accent);
-  border: 1px solid var(--border);
+  color: var(--shop-accent);
+  background: rgba(79, 70, 229, 0.06);
+  border: 1px solid rgba(79, 70, 229, 0.15);
   padding: 6px 16px;
   border-radius: 100px;
   margin-bottom: 20px;
@@ -112,35 +113,34 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--navy-accent);
+  background: var(--shop-accent);
   opacity: 0.7;
 }
 
 .contact-header h2 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 400;
-  color: var(--text-bright);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-dark);
   margin: 0 0 16px;
-  line-height: 1.3;
-  font-family: var(--font-khmer-display);
+  line-height: 1.4;
+  font-family: var(--font-khmer-display); /* ប្រើអក្សរឆ្លាក់ Moul */
 }
 
 .contact-header h2 .khmer {
-  color: var(--text-bright);
+  color: var(--text-dark);
   font-size: 0.65em;
   font-weight: 400;
   display: inline-block;
   margin-left: 12px;
   opacity: 0.75;
   font-style: italic;
-  font-family: var(--font-khmer);
+  font-family: var(--font-khmer-body);
 }
 
 .contact-header p {
-  color: var(--text-muted);
+  color: var(--shop-muted);
   font-size: 1rem;
-  line-height: 2;
-  font-family: var(--font-khmer);
+  line-height: 1.8;
 }
 
 /* ============================= */
@@ -160,37 +160,24 @@
 /* ============================= */
 
 .company-info {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 22px;
+  border-radius: 24px;
   padding: 38px 32px;
   display: flex;
   flex-direction: column;
   gap: 0;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.01);
   position: relative;
   overflow: hidden;
 }
 
-/* Diagonal corner glow */
-.company-info::after {
-  content: '';
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 160px;
-  height: 160px;
-  background: radial-gradient(circle, rgba(63, 94, 150, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-
 .info-item {
   display: flex;
-  gap: 16px;
+  gap: 18px;
   align-items: flex-start;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(63, 94, 150, 0.12);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
   transition: background 0.25s;
 }
 
@@ -204,44 +191,44 @@
 }
 
 .info-icon {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  background: rgba(63, 94, 150, 0.12);
-  border: 1px solid var(--border);
-  border-radius: 11px;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.1);
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--navy-accent);
-  font-size: 15px;
+  color: var(--shop-accent);
+  font-size: 16px;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
 }
 
 .info-item:hover .info-icon {
-  background: rgba(63, 94, 150, 0.25);
-  border-color: var(--border-hover);
-  transform: scale(1.1) rotate(-4deg);
-  box-shadow: 0 6px 18px rgba(63, 94, 150, 0.25);
+  background: var(--shop-accent);
+  color: #ffffff;
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 6px 20px rgba(6, 5, 16, 0.25);
 }
 
 .info-label {
   display: block;
-  font-family: var(--font-khmer);
-  font-size: 12px;
-  font-weight: 600;
+  font-family: var(--font-mono-khmer);
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-bright);
+  color: var(--shop-accent);
   margin-bottom: 5px;
+  letter-spacing: 0.05em;
 }
 
 .info-item p {
   margin: 0;
-  color: var(--text-muted);
-  font-size: 0.93rem;
-  line-height: 1.8;
-  font-family: var(--font-khmer);
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 /* ============================= */
@@ -249,21 +236,12 @@
 /* ============================= */
 
 .contact-map {
-  border-radius: 22px;
+  border-radius: 24px;
   overflow: hidden;
   border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.02);
   min-height: 380px;
   position: relative;
-}
-
-/* Navy tint overlay */
-.contact-map::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(13, 22, 34, 0.08) 0%, transparent 30%);
-  pointer-events: none;
-  border-radius: 22px;
 }
 
 .contact-map iframe {
@@ -272,7 +250,8 @@
   min-height: 380px;
   display: block;
   border: none;
-  filter: brightness(0.82) saturate(0.6) hue-rotate(185deg) contrast(1.05);
+  /* ធ្វើឱ្យ Map មើលទៅស្រទន់ និងស៊ីគ្នាជាមួយទំព័រភ្លឺ */
+  filter: grayscale(0.1) contrast(0.95);
 }
 
 /* ============================= */
@@ -283,23 +262,21 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  background: rgba(63, 94, 150, 0.1);
-  color: #a8c4e8;
-  border: 1px solid rgba(63, 94, 150, 0.45);
-  padding: 16px 22px;
-  border-radius: 14px;
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+  padding: 16px 24px;
+  border-radius: 16px;
   margin-bottom: 36px;
   font-size: 0.95rem;
-  font-family: var(--font-khmer);
-  line-height: 2;
+  line-height: 1.8;
   animation: slideDown 0.4s ease;
-  backdrop-filter: blur(8px);
 }
 
 .success-alert i {
   font-size: 20px;
   flex-shrink: 0;
-  color: var(--navy-accent);
+  color: #16a34a;
 }
 
 @keyframes slideDown {
@@ -318,41 +295,16 @@
 /* ============================= */
 
 .contact-form {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 26px;
+  border-radius: 24px;
   padding: 52px 44px;
   display: flex;
   flex-direction: column;
   gap: 26px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02);
   position: relative;
   overflow: hidden;
-}
-
-/* Top shimmer line */
-.contact-form::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 15%;
-  right: 15%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--navy-accent), transparent);
-  opacity: 0.55;
-}
-
-/* Bottom corner glow */
-.contact-form::after {
-  content: '';
-  position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(63, 94, 150, 0.1) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .form-row {
@@ -364,21 +316,20 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 8px;
 }
 
 label {
-  font-size: 13px;
-  font-weight: 700;
-  color: #9fb3ce;
-  font-family: var(--font-khmer);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
 }
 
 label .en {
-  font-family: 'DM Mono', 'Courier New', monospace;
-  color: var(--text-dim);
-  font-size: 10px;
-  font-weight: 400;
+  font-family: var(--font-mono-khmer);
+  color: var(--shop-muted);
+  font-size: 11px;
+  font-weight: 500;
   margin-left: 7px;
   text-transform: uppercase;
 }
@@ -391,45 +342,39 @@ input,
 textarea {
   width: 100%;
   box-sizing: border-box;
-  padding: 13px 20px;
-  background: rgba(13, 22, 34, 0.65);
-  border: 1px solid rgba(63, 94, 150, 0.22);
+  padding: 14px 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 14px;
-  font-size: 0.94rem;
-  color: var(--text-bright);
-  font-family: var(--font-khmer);
-  transition:
-    border-color 0.3s,
-    background 0.3s,
-    box-shadow 0.3s;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  font-family: var(--font-khmer-body);
+  transition: all 0.3s ease;
   outline: none;
 }
 
 input {
-  border-radius: 50px;
+  border-radius: 24px;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: rgba(63, 94, 150, 0.38);
+  color: #94a3b8;
   font-size: 0.9rem;
-  font-family: var(--font-khmer);
 }
 
 input:focus,
 textarea:focus {
-  border-color: var(--navy-accent);
-  background: rgba(63, 94, 150, 0.07);
-  box-shadow:
-    0 0 0 3px rgba(63, 94, 150, 0.14),
-    inset 0 1px 0 rgba(63, 94, 150, 0.08);
+  border-color: var(--shop-accent);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
 }
 
 textarea {
   resize: vertical;
   min-height: 135px;
-  border-radius: 18px;
-  line-height: 2;
+  border-radius: 16px;
+  line-height: 1.8;
 }
 
 /* ============================= */
@@ -437,14 +382,12 @@ textarea {
 /* ============================= */
 
 .error {
-  color: #f87171;
-  font-size: 12px;
-  font-family: var(--font-khmer);
+  color: #ef4444;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin-top: 3px;
-  line-height: 1.9;
+  gap: 6px;
+  margin-top: 4px;
   animation: shake 0.28s ease-in-out;
 }
 
@@ -454,10 +397,10 @@ textarea {
     transform: translateX(0);
   }
   30% {
-    transform: translateX(-5px);
+    transform: translateX(-4px);
   }
   70% {
-    transform: translateX(5px);
+    transform: translateX(4px);
   }
 }
 
@@ -467,45 +410,25 @@ textarea {
 
 button[type='submit'] {
   align-self: flex-start;
-  background: linear-gradient(135deg, #3f5e96 0%, #2d4a7a 100%);
-  color: #e8edf5;
+  background: var(--shop-accent);
+  color: #ffffff;
   padding: 15px 42px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  border: 1px solid rgba(63, 94, 150, 0.5);
-  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 24px;
   cursor: pointer;
-  font-family: var(--font-khmer);
+  font-family: var(--font-khmer-body);
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Shine sweep on hover */
-button[type='submit']::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-  transition: left 0.5s ease;
-}
-
-button[type='submit']:hover:not(:disabled)::before {
-  left: 160%;
+  transition: all 0.3s ease;
 }
 
 button[type='submit']:hover:not(:disabled) {
-  background: linear-gradient(135deg, #4d70aa 0%, #3a5a8a 100%);
-  transform: translateY(-3px);
-  box-shadow:
-    0 12px 30px rgba(63, 94, 150, 0.4),
-    0 0 0 1px rgba(63, 94, 150, 0.3);
+  background: var(--shop-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
 }
 
 button[type='submit']:active:not(:disabled) {
@@ -513,9 +436,8 @@ button[type='submit']:active:not(:disabled) {
 }
 
 button[type='submit']:disabled {
-  background: rgba(63, 94, 150, 0.14);
-  color: var(--text-dim);
-  border-color: var(--border);
+  background: #cbd5e1;
+  color: #94a3b8;
   cursor: not-allowed;
 }
 
@@ -530,7 +452,7 @@ button[type='submit']:disabled {
 
   .contact-map,
   .contact-map iframe {
-    min-height: 290px;
+    min-height: 320px;
   }
 }
 
@@ -541,14 +463,15 @@ button[type='submit']:disabled {
 
   .form-row {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .contact-form {
-    padding: 30px 22px;
+    padding: 36px 24px;
   }
 
   .company-info {
-    padding: 26px 22px;
+    padding: 32px 24px;
   }
 
   button[type='submit'] {

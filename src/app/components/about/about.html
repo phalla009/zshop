@@ -4,13 +4,13 @@
     <div class="hero" data-aos="fade-right">
       <span class="section-label">01 / {{ lang === 'en' ? 'About' : 'អំពីយើង' }}</span>
       <h2>
-        {{ lang === 'en' ? 'About Us' : 'អំពីយើង' }}
+        {{ lang === 'en' ? "About Z'SHOP" : "អំពី Z'SHOP" }}
       </h2>
       <p>
         {{
           lang === 'en'
-            ? 'We create amazing web applications with a focus on design and performance.'
-            : 'យើងបង្កើតកម្មវិធីគេហទំព័រដ៏អស្ចារ្យ ដោយផ្តោតសំខាន់លើការរចនា និងប្រសិទ្ធភាពខ្ពស់។'
+            ? "We are Cambodia's premier modern distribution center, elevating personal style through curated high-quality clothing, watches, and premium shoes."
+            : 'យើងគឺជាមជ្ឈមណ្ឌលចែកចាយឈានមុខគេក្នុងប្រទេសកម្ពុជា ដែលលើកកម្ពស់ស្ទីលផ្ទាល់ខ្លួនរបស់អ្នក តាមរយៈការជ្រើសរើសយ៉ាងសម្រិតសម្រាំងនូវសម្លៀកបំពាក់ នាឡិកាដៃ និងស្បែកជើងដែលមានគុណភាពខ្ពស់។'
         }}
       </p>
     </div>
@@ -23,10 +23,73 @@
       <p>
         {{
           lang === 'en'
-            ? 'To deliver high-quality digital experiences that delight users and empower businesses.'
-            : 'ផ្តល់ជូននូវបទពិសោធន៍ឌីជីថលដែលមានគុណភាពខ្ពស់ ដើម្បីបំពេញចិត្តអ្នកប្រើប្រាស់ និងពង្រឹងសមត្ថភាពអាជីវកម្ម។'
+            ? 'To deliver exceptional, authentic fashion pieces that empower our community to express their identity with confidence and absolute comfort.'
+            : 'ផ្តល់ជូននូវផលិតផលម៉ូដទាន់សម័យពិតប្រាកដ និងមានគុណភាពល្អឥតខ្ចោះ ដើម្បីជួយឱ្យអតិថិជនរបស់យើងអាចបង្ហាញពីអត្តសញ្ញាណរបស់ពួកគេដោយភាពជឿជាក់ និងភាពងាយស្រួលបំផុត។'
         }}
       </p>
+    </div>
+  </section>
+
+  <!-- ── ផ្នែកបន្ថែមថ្មី៖ Statistics (ស្ថិតិហាង) ── -->
+  <section class="stats-section" data-aos="fade-up">
+    <div class="stat-item">
+      <h3>10K+</h3>
+      <p>{{ lang === 'en' ? 'Happy Customers' : 'អតិថិជនដែលពេញចិត្ត' }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>500+</h3>
+      <p>{{ lang === 'en' ? 'Premium Products' : 'ផលិតផលប្រណិតៗ' }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>25</h3>
+      <p>{{ lang === 'en' ? 'Provinces Delivered' : 'ដឹកជញ្ជូនគ្រប់ខេត្តក្រុង' }}</p>
+    </div>
+  </section>
+
+  <hr class="separator" data-aos="fade-up" />
+
+  <!-- ── ផ្នែកបន្ថែមថ្មី៖ Core Values (គុណតម្លៃស្នូល) ── -->
+  <section class="values-section">
+    <span class="section-label" data-aos="fade-up"
+      >03 / {{ lang === 'en' ? 'Values' : 'គុណតម្លៃ' }}</span
+    >
+    <h2 class="section-title" data-aos="fade-up">
+      {{ lang === 'en' ? 'Why Choose Us' : 'ហេតុអ្វីជ្រើសរើសយើងខ្ញុំ' }}
+    </h2>
+    <div class="values-grid">
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h3>{{ lang === 'en' ? '100% Authentic' : 'ផលិតផលសុទ្ធ ១០០%' }}</h3>
+        <p>
+          {{
+            lang === 'en'
+              ? 'Every piece is strictly inspected for genuine quality.'
+              : 'គ្រប់ផលិតផលទាំងអស់ត្រូវបានត្រួតពិនិត្យយ៉ាងម៉ត់ចត់ដើម្បីធានាគុណភាពពិតប្រាកដ។'
+          }}
+        </p>
+      </div>
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fa-solid fa-heart"></i>
+        <h3>{{ lang === 'en' ? 'Customer First' : 'អតិថិជនជាចម្បង' }}</h3>
+        <p>
+          {{
+            lang === 'en'
+              ? 'Our dedicated support team is always ready to assist your journey.'
+              : 'ក្រុមការងារគាំទ្ររបស់យើងតែងតែត្រៀមខ្លួនជាស្រេចដើម្បីបម្រើលោកអ្នក។'
+          }}
+        </p>
+      </div>
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fa-solid fa-sparkles"></i>
+        <h3>{{ lang === 'en' ? 'Trendsetters' : 'ឈានមុខគេខាងម៉ូដ' }}</h3>
+        <p>
+          {{
+            lang === 'en'
+              ? 'Bringing the latest global fashion trends straight to Cambodia.'
+              : 'នាំយកទំនោរម៉ូដថ្មីៗចុងក្រោយបង្អស់ពីជុំវិញពិភពលោកមកកាន់កម្ពុជា។'
+          }}
+        </p>
+      </div>
     </div>
   </section>
 
@@ -35,7 +98,7 @@
   <!-- ── Team ── -->
   <section class="team">
     <span class="section-label" data-aos="fade-up"
-      >03 / {{ lang === 'en' ? 'Team' : 'ក្រុមការងារ' }}</span
+      >04 / {{ lang === 'en' ? 'Team' : 'ក្រុមការងារ' }}</span
     >
     <h2 data-aos="fade-up">
       {{ lang === 'en' ? 'Meet the Team' : 'ជួបជាមួយក្រុមការងារ' }}

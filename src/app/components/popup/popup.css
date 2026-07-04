@@ -101,6 +101,7 @@
   border: none;
   padding: 12px 28px;
   border-radius: 30px;
+  font-family: 'Kantumruy Pro';
   font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -115,6 +116,7 @@
 .popup-actions .btn-outline {
   background: transparent;
   color: #fff;
+  font-family: 'Kantumruy Pro';
   border: 2px solid rgba(255, 255, 255, 0.6);
   padding: 12px 28px;
   border-radius: 30px;

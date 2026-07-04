@@ -57,7 +57,7 @@ export class About implements AfterViewInit, OnDestroy {
     },
     {
       num: '03',
-      name: 'Jane Smith',
+      name: 'PHALLA HEANG',
       role: 'UI/UX Designer',
       descEn: 'Creates wireframes and designs that provide ease of use.',
       descKh: 'បង្កើតនូវគំនូសព្រាង និងការរចនាដែលផ្តល់ភាពងាយស្រួលដល់អ្នកប្រើប្រាស់។',

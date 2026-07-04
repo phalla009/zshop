@@ -4,16 +4,18 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* ប្តូរផ្ទៃខាងក្រោយទំព័រទាំងមូលជាពណ៌ភ្លឺស្រឡះបែប Premium Shop */
+  background: #f8fafc;
 }
 
 .about-page {
   flex: 1;
-  font-family: 'DM Mono', 'Kantumruy Pro', 'Courier New', monospace;
-  padding: 60px 20px;
+  font-family: 'Plus Jakarta Sans', 'Kantumruy Pro', sans-serif;
+  padding: 80px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  background: transparent;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: #1e293b;
 }
 
 /* ============================= */
@@ -21,16 +23,12 @@
 /* ============================= */
 
 :root {
-  --font-khmer: 'Battambang', sans-serif;
-  --font-khmer-display: 'Moul', serif;
+  --font-khmer: 'Kantumruy Pro', sans-serif;
+  --font-khmer-display: 'Kantumruy Pro', sans-serif;
+  --shop-accent: #4f46e5; /* ពណ៌ Indigo បែប Premium E-commerce */
+  --shop-muted: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.9);
 }
-
-/* ============================= */
-/* NAVY MIRAGE PALETTE           */
-/* --dark:  #141E30               */
-/* --mid:   #243B55  (blended)    */
-/* --light: #3F5E96               */
-/* ============================= */
 
 /* ============================= */
 /* BUILT-IN ANIMATION SYSTEM     */
@@ -49,19 +47,19 @@
 }
 
 [data-aos='fade-up'] {
-  transform: translateY(50px);
+  transform: translateY(40px);
 }
 [data-aos='fade-down'] {
-  transform: translateY(-50px);
+  transform: translateY(-40px);
 }
 [data-aos='fade-left'] {
-  transform: translateX(50px);
+  transform: translateX(40px);
 }
 [data-aos='fade-right'] {
-  transform: translateX(-50px);
+  transform: translateX(-40px);
 }
 [data-aos='zoom-in'] {
-  transform: scale(0.82);
+  transform: scale(0.92);
 }
 
 [data-aos-delay='100'] {
@@ -76,9 +74,6 @@
 [data-aos-delay='400'] {
   transition-delay: 400ms;
 }
-[data-aos-delay='500'] {
-  transition-delay: 500ms;
-}
 
 @media (prefers-reduced-motion: reduce) {
   [data-aos] {
@@ -89,130 +84,147 @@
 }
 
 /* ============================= */
-/* PAGE BACKGROUND               */
-/* ============================= */
-
-:host {
-  background: linear-gradient(160deg, #141e30 0%, #1e2f4a 50%, #243b55 100%);
-}
-
-/* ============================= */
 /* SECTION LABEL / EYEBROW       */
 /* ============================= */
 
 .section-label {
   display: inline-block;
-  font-family: 'Battambang', monospace;
-  font-size: 0.8rem;
+  font-family: 'DM Mono', 'Kantumruy Pro', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  color: #ffffff;
-  border: 1px solid rgba(63, 94, 150, 0.45);
-  padding: 5px 14px;
+  color: var(--shop-accent);
+  background: rgba(79, 70, 229, 0.06);
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  padding: 6px 16px;
   border-radius: 100px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 /* ============================= */
-/* INTRO LAYOUT                  */
+/* INTRO LAYOUT (SHOP CLEAN)     */
 /* ============================= */
 
 .intro {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  gap: 2px;
-  margin-bottom: 80px;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(63, 94, 150, 0.25);
-  backdrop-filter: blur(12px);
+  gap: 20px;
+  margin-bottom: 60px;
 }
 
 .hero,
 .mission {
   flex: 1;
   min-width: 280px;
-  padding: 52px 44px;
+  padding: 44px 40px;
+  background: var(--card-bg);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.02);
   position: relative;
 }
 
-.hero {
-  background: linear-gradient(175deg, rgba(63, 94, 150, 0.18) 0%, rgba(20, 30, 48, 0.6) 100%);
-  border-right: 1px solid rgba(63, 94, 150, 0.2);
-}
-
-.mission {
-  background: linear-gradient(175deg, rgba(20, 30, 48, 0.6) 0%, rgba(63, 94, 150, 0.12) 100%);
-}
-
 .hero h2,
 .mission h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #e8edf5;
-  margin-bottom: 6px;
-  line-height: 1.3;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 14px;
   letter-spacing: -0.02em;
-}
-
-/* Khmer display font for h2 main text */
-.hero h2,
-.mission h2 {
-  font-family: var(--font-khmer-display);
-  font-weight: 400;
-}
-
-.hero h2 span,
-.mission h2 span {
-  display: block;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #8aa4cc;
-  margin-top: 8px;
-  font-style: italic;
-  font-family: var(--font-khmer);
-  letter-spacing: 0;
 }
 
 .hero p,
 .mission p {
-  font-size: 1.05rem;
-  color: #9fb3ce;
+  font-size: 1rem;
+  color: #475569;
   line-height: 1.8;
-  margin-top: 16px;
 }
 
-.hero p.khmer-font,
-.mission p.khmer-font {
-  font-family: var(--font-khmer);
-  font-size: 0.97rem;
-  color: #ffffff;
-  margin-top: 10px;
-  line-height: 2;
+/* ============================= */
+/* NEW STATS SECTION             */
+/* ============================= */
+
+.stats-section {
+  display: flex;
+  justify-content: space-around;
+  background: var(--shop-accent);
+  color: #000000;
+  padding: 40px 20px;
+  border-radius: 24px;
+  margin-bottom: 60px;
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.2);
+  text-align: center;
 }
 
-/* Decorative corner accent */
-.hero::before,
-.mission::after {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  border-color: rgba(63, 94, 150, 0.35);
-  border-style: solid;
-  pointer-events: none;
+.stat-item h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
 }
 
-.hero::before {
-  top: 20px;
-  left: 20px;
-  border-width: 1px 0 0 1px;
+.stat-item p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 500;
 }
 
-.mission::after {
-  bottom: 20px;
-  right: 20px;
-  border-width: 0 1px 1px 0;
+/* ============================= */
+/* NEW VALUES SECTION            */
+/* ============================= */
+
+.values-section {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 40px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.value-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-radius: 22px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.01);
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  border-color: rgba(79, 70, 229, 0.2);
+}
+
+.value-card i {
+  font-size: 2rem;
+  color: var(--shop-accent);
+  margin-bottom: 18px;
+}
+
+.value-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.value-card p {
+  font-size: 0.92rem;
+  color: var(--shop-muted);
+  line-height: 1.7;
 }
 
 /* ============================= */
@@ -222,9 +234,8 @@
 .separator {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #3f5e96, transparent);
-  margin: 0 0 70px;
-  opacity: 0.5;
+  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.08), transparent);
+  margin: 60px 0;
 }
 
 /* ============================= */
@@ -236,23 +247,10 @@
 }
 
 .team > h2 {
-  font-size: 2.2rem;
-  font-weight: 400;
-  color: #e8edf5;
-  margin-bottom: 6px;
-  letter-spacing: 0.01em;
-  font-family: var(--font-khmer-display);
-}
-
-.team > h2 .khmer-font {
-  display: block;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #6e8db5;
-  margin-top: 8px;
-  font-style: italic;
-  font-family: var(--font-khmer);
-  letter-spacing: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 40px;
 }
 
 .team-cards {
@@ -260,118 +258,86 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
-  margin-top: 44px;
 }
 
 /* ============================= */
-/* CARD                          */
+/* TEAM CARD (MINIMAL PREMIUM)   */
 /* ============================= */
 
 .card {
   position: relative;
-  background: linear-gradient(160deg, rgba(63, 94, 150, 0.22) 0%, rgba(20, 30, 48, 0.75) 100%);
-  border: 1px solid rgba(63, 94, 150, 0.3);
-  border-radius: 20px;
-  width: 220px;
-  padding: 32px 20px 28px;
-  transition:
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
-  backdrop-filter: blur(10px);
+  background: var(--card-bg);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 24px;
+  width: 260px;
+  padding: 36px 24px 30px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.01);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow: hidden;
 }
 
-/* Glowing top edge on hover */
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 20%;
-  right: 20%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #3f5e96, transparent);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
 .card:hover {
-  transform: translateY(-12px);
-  box-shadow:
-    0 24px 48px rgba(20, 30, 48, 0.6),
-    0 0 30px rgba(63, 94, 150, 0.2);
-  border-color: rgba(63, 94, 150, 0.55);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  border-color: rgba(79, 70, 229, 0.2);
 }
 
-/* Number badge */
 .card-number {
   position: absolute;
-  top: 14px;
-  right: 16px;
+  top: 16px;
+  right: 20px;
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  color: rgba(63, 94, 150, 0.7);
-  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--shop-muted);
+  opacity: 0.5;
 }
 
 .img-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .card img {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(63, 94, 150, 0.5);
-  box-shadow: 0 0 20px rgba(63, 94, 150, 0.3);
-  background: #141e30;
+  border: 3px solid #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
 }
 
 .card h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #c8d8ee;
-  margin-bottom: 6px;
-  text-transform: uppercase;
+  color: #0f172a;
+  margin-bottom: 4px;
 }
 
 .card .role {
   font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  color: #3f5e96;
-  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--shop-accent);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
 }
 
 .card .description {
-  font-size: 0.88rem;
-  color: #ffffff;
+  font-size: 0.9rem;
+  color: #475569;
   line-height: 1.7;
 }
 
-/* Khmer text in cards */
-.card .description.khmer-font {
-  font-family: var(--font-khmer);
-  font-size: 0.85rem;
-  line-height: 1.9;
-}
-
 /* ============================= */
-/* GLOBAL KHMER CLASS            */
+/* GLOBAL KHMER CLASSES          */
 /* ============================= */
 
 .khmer-font {
   font-family: var(--font-khmer);
-  line-height: 2;
+  line-height: 1.8;
 }
 
 /* ============================= */
@@ -381,35 +347,30 @@
 @media (max-width: 768px) {
   .intro {
     flex-direction: column;
-    gap: 0;
+    gap: 20px;
   }
 
-  .hero {
-    border-right: none;
-    border-bottom: 1px solid rgba(63, 94, 150, 0.2);
+  .stats-section {
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px 20px;
   }
 
   .hero h2,
   .mission h2,
-  .team > h2 {
-    font-size: 1.7rem;
-  }
-
-  .hero,
-  .mission {
-    padding: 36px 28px;
+  .team > h2,
+  .section-title {
+    font-size: 1.6rem;
   }
 }
 
 @media (max-width: 480px) {
-  .hero h2,
-  .mission h2,
-  .team > h2 {
-    font-size: 1.4rem;
+  .hero,
+  .mission {
+    padding: 32px 24px;
   }
 
   .card {
     width: 100%;
-    max-width: 300px;
   }
 }
