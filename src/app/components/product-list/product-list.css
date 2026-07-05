@@ -16,11 +16,12 @@
   --glass-bg: rgba(15, 22, 38, 0.72);
   --glass-card: rgba(20, 30, 48, 0.85);
 }
-
 /* ============================= */
 /* SEARCH SECTION                */
 /* ============================= */
-
+.product-page {
+  padding: 50px 28px 0px;
+}
 .search-wrapper {
   position: relative;
   display: flex;
@@ -110,6 +111,7 @@
   font-size: 20px;
 }
 .featured-header::after {
+  top: 10px;
   content: '';
   flex: 1;
   max-width: 200px;

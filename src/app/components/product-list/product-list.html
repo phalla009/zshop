@@ -1,188 +1,190 @@
-<div class="featured-header">
-  <h2 class="featured-title">
-    <i class="fas fa-bolt"></i>
-    {{ pageTitle() }}
-  </h2>
-</div>
-
-<div class="search-section">
-  <div class="search-wrapper">
-    <label class="search-label">{{ lang === 'en' ? 'Search' : 'ស្វែងរក' }}</label>
-    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-    <input
-      type="text"
-      [placeholder]="lang === 'en' ? 'Search by name...' : 'ស្វែងរកតាមឈ្មោះ...'"
-      (input)="updateSearch($event)"
-      [value]="searchTerm()"
-      class="search-input"
-    />
+<div class="product-page">
+  <div class="featured-header">
+    <h2 class="featured-title">
+      <i class="fas fa-bolt"></i>
+      {{ pageTitle() }}
+    </h2>
   </div>
-</div>
 
-<!-- ══════════════ RECENT PRODUCTS ══════════════ -->
-<section class="product-grid">
-  @if (filteredProducts().length === 0) {
-    <div class="no-product move-right">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
+  <div class="search-section">
+    <div class="search-wrapper">
+      <label class="search-label">{{ lang === 'en' ? 'Search' : 'ស្វែងរក' }}</label>
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input
+        type="text"
+        [placeholder]="lang === 'en' ? 'Search by name...' : 'ស្វែងរកតាមឈ្មោះ...'"
+        (input)="updateSearch($event)"
+        [value]="searchTerm()"
+        class="search-input"
+      />
     </div>
-  }
-  @for (item of filteredProducts().slice(0, 8); track item.id) {
-    <div class="product-card" (click)="openDetails(item)">
-      <div class="product-badge">{{ item.category }}</div>
-      @if (item.subcategory) {
-        <div
-          class="subcategory-badge"
-          [class.badge-men]="item.subcategory === 'men'"
-          [class.badge-women]="item.subcategory === 'women'"
-        >
-          {{ item.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
-        </div>
-      }
-      <div class="image-container">
-        <img [src]="item.image[0]" [alt]="item.name" />
-      </div>
-      <div class="product-info">
-        <h3>{{ item.name }}</h3>
-        <div class="divider"></div>
-        <p class="specs-label">
-          {{ lang === 'en' ? 'Technical Specifications:' : 'លក្ខណៈបច្ចេកទេស:' }}
-        </p>
-        <p class="specs-text">{{ item.specs }}</p>
-      </div>
-    </div>
-  }
-</section>
-<div class="hero-slider">
-  <div class="hero-slider-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
-    @for (slide of heroSlides1; track slide.id) {
-      <div class="hero-slide">
-        <img [src]="slide.image" [alt]="slide.title" class="hero-banner-img" />
-        <div class="hero-banner-text">
-          <h2>{{ slide.title }}</h2>
-        </div>
+  </div>
+
+  <!-- ══════════════ RECENT PRODUCTS ══════════════ -->
+  <section class="product-grid">
+    @if (filteredProducts().length === 0) {
+      <div class="no-product move-right">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
       </div>
     }
-  </div>
-  <div class="hero-dots">
-    @for (slide of heroSlides1; track slide.id; let i = $index) {
-      <span class="hero-dot" [class.active]="i === currentSlide()" (click)="goToSlide(i)"></span>
-    }
-  </div>
-</div>
-<!-- ══════════════ LATEST PRODUCTS ══════════════ -->
-<div class="featured-header">
-  <h2 class="featured-title">
-    <i class="fas fa-bolt"></i>
-    {{ lang === 'en' ? 'LATEST PRODUCTS' : 'ផលិតផលថ្មីៗ' }}
-  </h2>
-</div>
-<section class="blog-section">
-  @if (filteredProducts().length === 0) {
-    <div class="no-product">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
-    </div>
-  }
-  <div class="blog-grid">
-    @for (post of filteredProducts().slice(-6); track post.id) {
-      <div class="blog-card" (click)="openDetails(post)">
-        <div class="blog-img-wrapper">
-          <img [src]="post.image[0]" [alt]="post.name" />
-          @if (post.subcategory) {
-            <div
-              class="blog-sub-badge"
-              [class.badge-men]="post.subcategory === 'men'"
-              [class.badge-women]="post.subcategory === 'women'"
-            >
-              {{ post.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
-            </div>
-          }
+    @for (item of filteredProducts().slice(0, 8); track item.id) {
+      <div class="product-card" (click)="openDetails(item)">
+        <div class="product-badge">{{ item.category }}</div>
+        @if (item.subcategory) {
+          <div
+            class="subcategory-badge"
+            [class.badge-men]="item.subcategory === 'men'"
+            [class.badge-women]="item.subcategory === 'women'"
+          >
+            {{ item.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
+          </div>
+        }
+        <div class="image-container">
+          <img [src]="item.image[0]" [alt]="item.name" />
         </div>
-        <div class="blog-content">
-          <h4>{{ post.name }}</h4>
+        <div class="product-info">
+          <h3>{{ item.name }}</h3>
           <div class="divider"></div>
-          <p>{{ post.specs }}</p>
+          <p class="specs-label">
+            {{ lang === 'en' ? 'Technical Specifications:' : 'លក្ខណៈបច្ចេកទេស:' }}
+          </p>
+          <p class="specs-text">{{ item.specs }}</p>
         </div>
       </div>
     }
-  </div>
-</section>
-
-<!-- ══════════════ FEATURED PRODUCTS ══════════════ -->
-<div class="featured-header">
-  <h2 class="featured-title">
-    <i class="fas fa-star"></i>
-    {{ lang === 'en' ? 'FEATURED PRODUCTS' : 'ផលិតផលពិសេស' }}
-  </h2>
-</div>
-<section class="product-grid">
-  @if (filteredProducts().length === 0) {
-    <div class="no-product">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
-    </div>
-  }
-  @for (item of filteredProducts().slice(8, -6); track item.id) {
-    <div class="product-card" (click)="openDetails(item)">
-      <div class="product-badge">{{ item.category }}</div>
-      @if (item.subcategory) {
-        <div
-          class="subcategory-badge"
-          [class.badge-men]="item.subcategory === 'men'"
-          [class.badge-women]="item.subcategory === 'women'"
-        >
-          {{ item.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
+  </section>
+  <div class="hero-slider">
+    <div class="hero-slider-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
+      @for (slide of heroSlides1; track slide.id) {
+        <div class="hero-slide">
+          <img [src]="slide.image" [alt]="slide.title" class="hero-banner-img" />
+          <div class="hero-banner-text">
+            <h2>{{ slide.title }}</h2>
+          </div>
         </div>
       }
-      <div class="image-container">
-        <img [src]="item.image[0]" [alt]="item.name" />
-      </div>
-      <div class="product-info">
-        <h3>{{ item.name }}</h3>
-        <div class="divider"></div>
-        <p class="specs-label">
-          {{ lang === 'en' ? 'Technical Specifications:' : 'លក្ខណៈបច្ចេកទេស:' }}
-        </p>
-        <p class="specs-text">{{ item.specs }}</p>
-      </div>
     </div>
-  }
-</section>
-<!-- In hero.html, change the view-counter div to: -->
-<div class="view-counter-wrapper">
-  <div class="view-counter">
-    <i class="fa-solid fa-eye"></i>
-    <span id="viewCount">...</span> views
+    <div class="hero-dots">
+      @for (slide of heroSlides1; track slide.id; let i = $index) {
+        <span class="hero-dot" [class.active]="i === currentSlide()" (click)="goToSlide(i)"></span>
+      }
+    </div>
   </div>
-</div>
-<!-- Back to top -->
-<button class="back-to-top" [class.show]="isShow" (click)="scrollToTop()">
-  <i class="fa-solid fa-angles-up"></i>
-</button>
-<div class="hero-slider">
-  <div class="hero-slider-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
-    @for (slide of heroSlides; track slide.id) {
-      <div class="hero-slide">
-        <img [src]="slide.image" [alt]="slide.title" class="hero-banner-img" />
-        <div class="hero-banner-text">
-          <h2>{{ slide.title }}</h2>
+  <!-- ══════════════ LATEST PRODUCTS ══════════════ -->
+  <div class="featured-header">
+    <h2 class="featured-title">
+      <i class="fas fa-bolt"></i>
+      {{ lang === 'en' ? 'LATEST PRODUCTS' : 'ផលិតផលថ្មីៗ' }}
+    </h2>
+  </div>
+  <section class="blog-section">
+    @if (filteredProducts().length === 0) {
+      <div class="no-product">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
+      </div>
+    }
+    <div class="blog-grid">
+      @for (post of filteredProducts().slice(-6); track post.id) {
+        <div class="blog-card" (click)="openDetails(post)">
+          <div class="blog-img-wrapper">
+            <img [src]="post.image[0]" [alt]="post.name" />
+            @if (post.subcategory) {
+              <div
+                class="blog-sub-badge"
+                [class.badge-men]="post.subcategory === 'men'"
+                [class.badge-women]="post.subcategory === 'women'"
+              >
+                {{ post.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
+              </div>
+            }
+          </div>
+          <div class="blog-content">
+            <h4>{{ post.name }}</h4>
+            <div class="divider"></div>
+            <p>{{ post.specs }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- ══════════════ FEATURED PRODUCTS ══════════════ -->
+  <div class="featured-header">
+    <h2 class="featured-title">
+      <i class="fas fa-star"></i>
+      {{ lang === 'en' ? 'FEATURED PRODUCTS' : 'ផលិតផលពិសេស' }}
+    </h2>
+  </div>
+  <section class="product-grid">
+    @if (filteredProducts().length === 0) {
+      <div class="no-product">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>{{ lang === 'en' ? 'Product not found' : 'រកមិនឃើញផលិតផល' }}</h3>
+      </div>
+    }
+    @for (item of filteredProducts().slice(8, -6); track item.id) {
+      <div class="product-card" (click)="openDetails(item)">
+        <div class="product-badge">{{ item.category }}</div>
+        @if (item.subcategory) {
+          <div
+            class="subcategory-badge"
+            [class.badge-men]="item.subcategory === 'men'"
+            [class.badge-women]="item.subcategory === 'women'"
+          >
+            {{ item.subcategory === 'men' ? '♂ MEN' : '♀ WOMEN' }}
+          </div>
+        }
+        <div class="image-container">
+          <img [src]="item.image[0]" [alt]="item.name" />
+        </div>
+        <div class="product-info">
+          <h3>{{ item.name }}</h3>
+          <div class="divider"></div>
+          <p class="specs-label">
+            {{ lang === 'en' ? 'Technical Specifications:' : 'លក្ខណៈបច្ចេកទេស:' }}
+          </p>
+          <p class="specs-text">{{ item.specs }}</p>
         </div>
       </div>
     }
+  </section>
+  <!-- In hero.html, change the view-counter div to: -->
+  <div class="view-counter-wrapper">
+    <div class="view-counter">
+      <i class="fa-solid fa-eye"></i>
+      <span id="viewCount">...</span> views
+    </div>
   </div>
-
-  <button class="hero-nav hero-nav-prev" (click)="prevSlide()">
-    <i class="fa-solid fa-chevron-left"></i>
+  <!-- Back to top -->
+  <button class="back-to-top" [class.show]="isShow" (click)="scrollToTop()">
+    <i class="fa-solid fa-angles-up"></i>
   </button>
-  <button class="hero-nav hero-nav-next" (click)="nextSlide()">
-    <i class="fa-solid fa-chevron-right"></i>
-  </button>
+  <div class="hero-slider">
+    <div class="hero-slider-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
+      @for (slide of heroSlides; track slide.id) {
+        <div class="hero-slide">
+          <img [src]="slide.image" [alt]="slide.title" class="hero-banner-img" />
+          <div class="hero-banner-text">
+            <h2>{{ slide.title }}</h2>
+          </div>
+        </div>
+      }
+    </div>
 
-  <div class="hero-dots">
-    @for (slide of heroSlides; track slide.id; let i = $index) {
-      <span class="hero-dot" [class.active]="i === currentSlide()" (click)="goToSlide(i)"></span>
-    }
+    <button class="hero-nav hero-nav-prev" (click)="prevSlide()">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="hero-nav hero-nav-next" (click)="nextSlide()">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <div class="hero-dots">
+      @for (slide of heroSlides; track slide.id; let i = $index) {
+        <span class="hero-dot" [class.active]="i === currentSlide()" (click)="goToSlide(i)"></span>
+      }
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

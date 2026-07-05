@@ -1,16 +1,16 @@
-<nav class="navbar">
+<nav class="navbar" [class.scrolled]="isScrolled()" [class.hidden]="isHidden()">
   <div class="logo">
     <img src="/images/logo.png" alt="MyStore Logo" />
     Z'SHOP <span class="country-name">Cambodia</span>
   </div>
 
   <div class="menu-toggle" (click)="toggleMenu()">
-    <span [class.open]="isOpen"></span>
-    <span [class.open]="isOpen"></span>
-    <span [class.open]="isOpen"></span>
+    <span [class.open]="isOpen()"></span>
+    <span [class.open]="isOpen()"></span>
+    <span [class.open]="isOpen()"></span>
   </div>
 
-  <ul class="nav-links" [class.active]="isOpen">
+  <ul class="nav-links" [class.active]="isOpen()">
     <li>
       <a routerLink="/" (click)="closeMenu()">{{ lang === 'en' ? 'HOME' : 'ទំព័រដើម' }}</a>
     </li>
@@ -19,12 +19,12 @@
     <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn" (click)="toggleCategory($event)">
         {{ lang === 'en' ? 'ALL CATEGORIES' : 'ប្រភេទទាំងអស់' }}
-        <span class="dropdown-icon" [class.rotate]="isCategoryOpen">&#9662;</span>
+        <span class="dropdown-icon" [class.rotate]="isCategoryOpen()">&#9662;</span>
       </a>
 
-      <ul class="dropdown-content" [class.show]="isCategoryOpen">
+      <ul class="dropdown-content" [class.show]="isCategoryOpen()">
         <!-- សម្លៀកបំពាក់ -->
-        <li class="has-submenu" [class.submenu-open]="activeCategory === 'clothing'">
+        <li class="has-submenu" [class.submenu-open]="activeCategory() === 'clothing'">
           <a
             href="javascript:void(0)"
             class="submenu-trigger"
@@ -32,7 +32,7 @@
           >
             <span class="cat-label">{{ lang === 'en' ? 'Clothing' : 'សម្លៀកបំពាក់' }}</span>
             <span class="khmer-sub">{{ lang === 'en' ? 'សម្លៀកបំពាក់' : 'Clothing' }}</span>
-            <span class="submenu-arrow" [class.rotate]="activeCategory === 'clothing'"
+            <span class="submenu-arrow" [class.rotate]="activeCategory() === 'clothing'"
               >&#8250;</span
             >
           </a>
@@ -53,7 +53,7 @@
         </li>
 
         <!-- នាឡិកា -->
-        <li class="has-submenu" [class.submenu-open]="activeCategory === 'watches'">
+        <li class="has-submenu" [class.submenu-open]="activeCategory() === 'watches'">
           <a
             href="javascript:void(0)"
             class="submenu-trigger"
@@ -61,7 +61,9 @@
           >
             <span class="cat-label">{{ lang === 'en' ? 'Watches' : 'នាឡិកា' }}</span>
             <span class="khmer-sub">{{ lang === 'en' ? 'នាឡិកា' : 'Watches' }}</span>
-            <span class="submenu-arrow" [class.rotate]="activeCategory === 'watches'">&#8250;</span>
+            <span class="submenu-arrow" [class.rotate]="activeCategory() === 'watches'"
+              >&#8250;</span
+            >
           </a>
           <ul class="gender-list">
             <li>
@@ -80,7 +82,7 @@
         </li>
 
         <!-- ស្បែកជើង -->
-        <li class="has-submenu" [class.submenu-open]="activeCategory === 'shoes'">
+        <li class="has-submenu" [class.submenu-open]="activeCategory() === 'shoes'">
           <a
             href="javascript:void(0)"
             class="submenu-trigger"
@@ -88,7 +90,7 @@
           >
             <span class="cat-label">{{ lang === 'en' ? 'Shoes' : 'ស្បែកជើង' }}</span>
             <span class="khmer-sub">{{ lang === 'en' ? 'ស្បែកជើង' : 'Shoes' }}</span>
-            <span class="submenu-arrow" [class.rotate]="activeCategory === 'shoes'">&#8250;</span>
+            <span class="submenu-arrow" [class.rotate]="activeCategory() === 'shoes'">&#8250;</span>
           </a>
           <ul class="gender-list">
             <li>

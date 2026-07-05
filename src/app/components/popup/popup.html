@@ -1,4 +1,4 @@
-<div class="popup-backdrop" *ngIf="isVisible" (click)="onBackdropClick($event)">
+<div class="popup-backdrop" *ngIf="isVisible()" (click)="onBackdropClick($event)">
   <div class="popup-box">
     <button class="popup-close" (click)="close()" aria-label="Close">
       <i class="fa-solid fa-xmark"></i>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LangService } from '../../services/Lang';
 
@@ -10,7 +10,9 @@ import { LangService } from '../../services/Lang';
   styleUrl: './popup.css',
 })
 export class Popup implements OnInit {
-  isVisible: boolean = false;
+  // ប្តូរពី plain boolean ទៅ signal — ធានាថា Angular ជ្រាបពីការផ្លាស់ប្តូរ
+  // ភ្លាមៗ ទោះក្នុងកម្មវិធីប្រើ Zoneless Change Detection ក៏ដោយ
+  isVisible = signal(false);
 
   constructor(public langService: LangService) {}
 
@@ -20,12 +22,12 @@ export class Popup implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.isVisible = true;
+      this.isVisible.set(true);
     }, 800);
   }
 
   close() {
-    this.isVisible = false;
+    this.isVisible.set(false);
   }
 
   onBackdropClick(event: MouseEvent) {
