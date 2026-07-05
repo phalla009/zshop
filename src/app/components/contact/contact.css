@@ -456,7 +456,7 @@ button[type='submit']:disabled {
 
 @media (max-width: 640px) {
   .contact-wrapper {
-    padding: 60px 16px 80px;
+    padding: 90px 16px 80px;
   }
 
   .form-row {
