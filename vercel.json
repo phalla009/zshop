@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/zshop/:path*", "destination": "/:path*" },
+    { "source": "/zshop", "destination": "/index.html" }
+  ]
+}
