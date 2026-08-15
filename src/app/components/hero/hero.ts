@@ -1,11 +1,12 @@
 import { Component, HostListener, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LangService } from '../../services/Lang';
+import { FixImagePathPipe } from '../../pipes/fix-image-path.pipe';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FixImagePathPipe],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })

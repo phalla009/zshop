@@ -43,7 +43,7 @@
       <button class="btn-primary">
         {{ lang === 'en' ? 'Explore Services' : 'ស្វែងរកសេវាកម្ម' }}
       </button>
-      <a href="/contact">
+      <a routerLink="/contact">
         <button class="btn-outline">{{ lang === 'en' ? 'Contact Us' : 'ទំនាក់ទំនង' }}</button>
       </a>
     </div>
@@ -68,7 +68,7 @@
         *ngFor="let post of blogData.articles; let i = index"
       >
         <div class="blog-img">
-          <img [src]="post.img" [alt]="lang === 'en' ? post.nameEn : post.nameKh" />
+          <img [src]="post.img | fixImagePath" [alt]="lang === 'en' ? post.nameEn : post.nameKh" />
           <span class="category">{{ post.category }}</span>
         </div>
         <div class="blog-info">
