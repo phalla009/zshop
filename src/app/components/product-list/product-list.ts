@@ -15,11 +15,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Productservice } from '../../services/productservice';
 import { Product } from '../../models/product.model';
 import { LangService } from '../../services/Lang';
+import { FixImagePathPipe } from '../../pipes/fix-image-path.pipe';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [Footer],
+  imports: [Footer, FixImagePathPipe],
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.css'],
 })
@@ -215,9 +216,9 @@ export class ProductListComponent implements OnInit, AfterViewInit, AfterViewChe
     { id: 4, image: 'images/s4.jpg', title: 'Limited Offer' },
   ];
   heroSlides = [
-    { id: 1, image: '/images/banner-lising.jpg', title: 'Special Edition' },
-    { id: 2, image: '/images/2.jpg', title: 'New Arrivals' },
-    { id: 3, image: '/images/3.jpeg', title: 'Limited Offer' },
+    { id: 1, image: 'images/banner-lising.jpg', title: 'Special Edition' },
+    { id: 2, image: 'images/2.jpg', title: 'New Arrivals' },
+    { id: 3, image: 'images/3.jpeg', title: 'Limited Offer' },
   ];
   currentSlide = signal(0);
   private autoplayId?: ReturnType<typeof setInterval>;
