@@ -7,11 +7,12 @@ import { Productservice } from '../../services/productservice';
 import { Product } from '../../models/product.model';
 import { LangService } from '../../services/Lang';
 import { environment } from '../../../environments/environment';
+import { FixImagePathPipe } from '../../pipes/fix-image-path.pipe';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule, Footer],
+  imports: [CommonModule, RouterLink, FormsModule, Footer, FixImagePathPipe],
   templateUrl: './product-detail.html',
   styleUrls: ['./product-detail.css'],
 })

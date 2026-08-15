@@ -24,14 +24,14 @@
               </span>
             </div>
           }
-          <img [src]="activeImg()" [alt]="product.name" class="main-img" />
+          <img [src]="activeImg() | fixImagePath" [alt]="product.name" class="main-img" />
         </div>
 
         @if (product.image.length > 1) {
           <div class="thumb-strip">
             @for (img of product.image; track img; let i = $index) {
               <img
-                [src]="img"
+                [src]="img | fixImagePath"
                 [alt]="product.name + ' ' + (i + 1)"
                 class="thumb"
                 [class.thumb-active]="activeImg() === img"
