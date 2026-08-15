@@ -1,11 +1,12 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { LangService } from '../../services/Lang';
 
 @Component({
   selector: 'app-popup',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './popup.html',
   styleUrl: './popup.css',
 })
