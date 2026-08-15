@@ -41,7 +41,7 @@
           </div>
         }
         <div class="image-container">
-          <img [src]="item.image[0]" [alt]="item.name" />
+          <img [src]="item.image[0] | fixImagePath" [alt]="item.name" />
         </div>
         <div class="product-info">
           <h3>{{ item.name }}</h3>
@@ -58,7 +58,7 @@
     <div class="hero-slider-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
       @for (slide of heroSlides1; track slide.id) {
         <div class="hero-slide">
-          <img [src]="slide.image" [alt]="slide.title" class="hero-banner-img" />
+          <img [src]="slide.image | fixImagePath" [alt]="slide.title" class="hero-banner-img" />
           <div class="hero-banner-text">
             <h2>{{ slide.title }}</h2>
           </div>
@@ -89,7 +89,7 @@
       @for (post of filteredProducts().slice(-6); track post.id) {
         <div class="blog-card" (click)="openDetails(post)">
           <div class="blog-img-wrapper">
-            <img [src]="post.image[0]" [alt]="post.name" />
+            <img [src]="post.image[0] | fixImagePath" [alt]="post.name" />
             @if (post.subcategory) {
               <div
                 class="blog-sub-badge"
@@ -137,7 +137,7 @@
           </div>
         }
         <div class="image-container">
-          <img [src]="item.image[0]" [alt]="item.name" />
+          <img [src]="item.image[0] | fixImagePath" [alt]="item.name" />
         </div>
         <div class="product-info">
           <h3>{{ item.name }}</h3>
@@ -165,7 +165,7 @@
     <div class="hero-slider-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
       @for (slide of heroSlides; track slide.id) {
         <div class="hero-slide">
-          <img [src]="slide.image" [alt]="slide.title" class="hero-banner-img" />
+          <img [src]="slide.image | fixImagePath" [alt]="slide.title" class="hero-banner-img" />
           <div class="hero-banner-text">
             <h2>{{ slide.title }}</h2>
           </div>
